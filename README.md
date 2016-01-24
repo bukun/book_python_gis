@@ -1,6 +1,6 @@
 # 说明
 
-Author: [Bu Kun]http://www.bukun.net
+Author: [Bu Kun](http://www.bukun.net)
 
 本代码为《Python与开源GIS》一书的脚本。
 
