@@ -12,10 +12,10 @@ for wroot, wdirs, wfiles in os.walk(cws):
             pyfile = os.path.join(wroot, wfile)[len(cws) + 1:]
             print(pyfile)
 
-            uu = pyfile[:-3].split('/')
+            uu = pyfile.split('/')
             print(uu)
             if len(uu) > 1:
-                outstr = '.'.join(uu)
+                outstr = '/'.join(uu)
                 fo.write( 'python3 -m {0}\n'.format(outstr))
 
 fo.close()
