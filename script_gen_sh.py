@@ -16,6 +16,6 @@ for wroot, wdirs, wfiles in os.walk(cws):
             print(uu)
             if len(uu) > 1:
                 outstr = '/'.join(uu)
-                fo.write( 'python3 -m {0}\n'.format(outstr))
+                fo.write( 'python3 {0}\n'.format(outstr))
 
 fo.close()
