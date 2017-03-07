@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+'''
+生成运行的脚本
+'''
+
 import os
 import sys
 
@@ -16,6 +21,6 @@ for wroot, wdirs, wfiles in os.walk(cws):
             print(uu)
             if len(uu) > 1:
                 outstr = '/'.join(uu)
-                fo.write( 'python3 {0}\n'.format(outstr))
+                fo.write('python3 {0}\n'.format(outstr))
 
 fo.close()

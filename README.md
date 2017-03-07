@@ -20,6 +20,10 @@ Author: [Bu Kun](http://www.osgeo.cn)
 
     nosetests3  --exe -v -d
 
+或者使用（会打印出来信息）： 
+
+    nosetests3  --exe -v -d -s
+
 ## 注意
 为了使 nosetests 能够对代码进行测试运行，文件需要按下面的要求进行组织：
 
