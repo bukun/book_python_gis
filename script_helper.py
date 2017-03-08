@@ -12,12 +12,11 @@ def create_init():
     生成 __init__.py 文件
     :return:
     '''
-    for wroot, wdirs, wfiles in os.walk('./'):
+    for wroot, wdirs, wfiles in os.walk('./pygis_src'):
         for wdir in wdirs:
 
             inws = os.path.join(wroot, wdir)
             if '/ch' in inws and '__pycache__' not in inws:
-                # print(inws)
                 initfile = os.path.join(inws, '__init__.py')
 
                 if os.path.exists(initfile):
@@ -53,24 +52,20 @@ def format_filename():
     对 Python 文件进行名称格式化
     :return:
     '''
-    for wroot, wdirs, wfiles in os.walk('./'):
+    for wroot, wdirs, wfiles in os.walk('./pygis_src'):
         for wfile in wfiles:
-            if wfile.endswith('.py') and wfile.startswith('test'):
+            if (wfile.endswith('.py') or wfile.endswith('.sh') or wfile.endswith('.sql')) and wfile.startswith('test'):
                 if wfile == '__init__.py':
                     continue
                 print('-' * 80)
                 # print(os.path.join(wroot, wfile))
                 uu = wroot.split('/')
-                ch_num = int(uu[1].split('_')[0][2:])
-                sec_num = int(uu[2].split('_')[0][3:])
+                ch_num = int(uu[2].split('_')[0][2:])
+                sec_num = int(uu[3].split('_')[0][3:])
 
                 new_arr = wfile.split('_')
 
                 new_name = 'test_{ch}_{sec}_{res}'.format(ch=ch_num, sec=sec_num, res=file_sig(new_arr))
-                # new_name = '_'.join(new_arr)
-
-                # print(wfile)
-                # print(new_name)
 
                 from_file = os.path.join(wroot, wfile)
                 to_file = os.path.join(wroot, new_name)
