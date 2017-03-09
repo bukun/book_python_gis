@@ -1,0 +1,6 @@
+
+python3-gdal
+python3-pyproj
+python3-shapely
+python3-fiona
+python3-mapnik libspatialite7 libsqlite3-mod-spatialite spatialite-bin

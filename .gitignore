@@ -1,5 +1,5 @@
 *.pyc
-gdata
+gdata_bak
 .idea/*
 .DS_Store
 x_*

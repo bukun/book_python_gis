@@ -19,7 +19,7 @@ Author: [Bu Kun](http://www.osgeo.cn)
 ## 使用单元测试 nose
 
 
-    nosetests3  --exe -v -d
+    nosetests3  --exe -v -d pygis_src
 
 或者使用（会打印出来信息）： 
 
