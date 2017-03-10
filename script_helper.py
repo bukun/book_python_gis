@@ -47,6 +47,16 @@ def file_sig(new_arr):
     return '_'.join([x for x in out_aa])
 
 
+def clear_tmp_files():
+    for wroot, wdirs, wfiles in os.walk('./'):
+        for wfile in wfiles:
+            if wfile.startswith('xx_'):
+                if wfile.endswith('.py'):
+                    continue
+                os.remove(os.path.join(wroot, wfile))
+                continue
+
+
 def format_filename():
     '''
     对 Python 文件进行名称格式化
@@ -54,9 +64,7 @@ def format_filename():
     '''
     for wroot, wdirs, wfiles in os.walk('./pygis_src'):
         for wfile in wfiles:
-            if wfile.startswith('xx_'):
-                os.remove(os.path.join(wroot, wfile))
-                continue
+
             if (wfile.endswith('.py') or wfile.endswith('.sh') or wfile.endswith('.sql')) and wfile.startswith('test'):
                 if wfile == '__init__.py':
                     continue
@@ -82,4 +90,5 @@ def format_filename():
 
 
 if __name__ == '__main__':
+    clear_tmp_files()
     format_filename()
