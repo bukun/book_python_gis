@@ -54,6 +54,9 @@ def format_filename():
     '''
     for wroot, wdirs, wfiles in os.walk('./pygis_src'):
         for wfile in wfiles:
+            if wfile.startswith('xx_'):
+                os.remove(os.path.join(wroot, wfile))
+                continue
             if (wfile.endswith('.py') or wfile.endswith('.sh') or wfile.endswith('.sql')) and wfile.startswith('test'):
                 if wfile == '__init__.py':
                     continue
