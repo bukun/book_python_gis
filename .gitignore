@@ -1,4 +1,5 @@
 *.pyc
+.idea
 gdata_bak
 gdata
 gdata2
@@ -6,3 +7,11 @@ gdata2
 .DS_Store
 x_*
 xx*
+*.tex
+
+pygis.pdf
+*.mtc?
+*.log
+*.aux
+*.png
+*.jpg

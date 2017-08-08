@@ -31,3 +31,7 @@ Author: [Bu Kun](http://www.osgeo.cn)
 * 所有的文件夹下面，都得有 `__init__.py` 文件，以使 nosetests 能够正确的遍历到文件夹下。
 * 所有的文件，都以`test`开头进行命名。
 * 文件的命名，不得含有中文字符、减号、空格、英文句号，及其他奇怪字符；需要进行分隔，可使用下划线`_`。
+
+## Updating notes
+
+20170808: The Latex files were merged into the codes.

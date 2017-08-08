@@ -1,0 +1,268 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{paper}[2005/07/06 0.1 Tsinghua University Thesis Template for Doctor and Master]
+
+\usepackage{geometry}
+% 
+\geometry{top=.7in,bottom=.7in,left=.8in,right=.6in}
+% 
+% % 可以修改页面的大小。双栏的话在类型中添加：twocolumn
+% % \geometry{top=1in,bottom=1in,left=1.65in,right=1.05in,paperheight=7.4in, paperwidth=12.20in }
+% 
+% \columnsep=.8cm % 双栏article中, 左右栏间空白的距离 
+% \columnseprule=0.4pt  % 双栏article中, 左右栏间分隔线的宽度, 缺省 为零, 即没 有线 
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,arrows}
+\usepackage{makeidx} % 制作索引
+% \usepackage{showidx} % 正文左边打印索引项
+\usepackage{amsmath,amssymb,amsthm} %使用大矩阵 bmatrix
+\usepackage{fontspec} %调整字体
+\usepackage{titlesec} %标题
+\usepackage{textcomp}
+\usepackage{ulem}
+\linespread{1.05}
+
+\usepackage{indentfirst} %中文首行缩进
+% \setlength{\parindent}{2em}
+\setlength{\parindent}{0.77cm} %缩进长度
+
+\usepackage{hyperref} %超链接
+\usepackage{xcolor} %颜色
+\usepackage{graphicx} %图形
+\usepackage{framed} %代码背景色
+\usepackage{verbatim} %代码
+\usepackage{xeCJK}
+\usepackage{longtable}  % 使表格文字自动换行
+\usepackage{multirow}
+\usepackage{ltxtable}
+\usepackage{array}
+\usepackage{supertabular}
+
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+
+\usepackage{minitoc}
+
+
+% \setcounter{secnumdepth}{3}  % subsubsection编号
+\usepackage{titlesec} %标题
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+% \titleformat{\paragraph}{\normalsize\bfseries}{\paragraph}{1em}{}
+
+\renewcommand{\baselinestretch}{1.4}
+% \renewcommand{\linewidth}{5}
+
+
+% \usepackage[latin1]{inputenc}
+%\usepackage[OT2,T1]{fontenc}
+% 使用文献为上标
+
+\usepackage{cite}
+\newcommand\bkcite[1]{\raisebox{0.3em}{\tiny\cite{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 重新定义verbatim环境
+\usepackage{fancyvrb}   
+% 交互式
+\DefineVerbatimEnvironment{vbtinter}{Verbatim}{fontsize=small, rulecolor=\color{gray}, frame=lines, baselinestretch=1, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt, }    
+% 源代码　
+\DefineVerbatimEnvironment{vbtsrc}{Verbatim}{fontsize=small, rulecolor=\color{green}, frame=lines, baselinestretch=1, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt, numbers=left, }    
+% 命令
+\DefineVerbatimEnvironment{vbtcmd}{Verbatim}{fontsize=small, rulecolor=\color{green}, frame=lines, baselinestretch=1, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt, fontshape=sl,}    
+% 输出
+\DefineVerbatimEnvironment{vbtecho}{Verbatim}{fontsize=small, rulecolor=\color{green}, frame=lines, baselinestretch=1, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt, numbers=left, fontshape=sl,}    
+% 列表
+\DefineVerbatimEnvironment{vbtlist}{Verbatim}{fontsize=small, rulecolor=\color{green}, frame=lines, baselinestretch=1, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt,}    
+
+
+\def\@textsubscript#1{{\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+\DeclareRobustCommand*\textsubscript[1]{\@textsubscript{\selectfont#1}}
+
+
+% \makeatletter
+% \def\verbatim@font{\small\ttfamily\hyphenchar\font\m@ne\@noligs}
+% \ttfamily 可以换成 \rmfamily， \sffamily 见附件。
+% 请问verbatim环境下为何改了 \ttfamily 会出现 "\" 不显示等问题？文件在上一楼的附件中。
+% 因为不是所有的字体都有 \ 这个符号的。
+% 修改 Typewriter 字体的方法一般是重定义 \ttdefault 字体族；或者使用 fontspec 的 \setmonofont。
+% verbatim 环境的字体是 \verbatim@font 控制的，但我不建议新手修改这个命令，它比一般想像的要难一些。
+% \def\verbatim@font{\sffamily\small} %如果使用roman字体族，将sffamily改成rmfamily
+% \makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 页眉页脚
+\usepackage{fancyhdr}
+% 设置 plain style 的属性
+\fancypagestyle{fancy}  % {plain}   fancy
+
+\fancyhf{}                    % 清空当前设置
+
+% 设置页眉 (head)
+\fancyhead[RE]{\leftmark}     % 在偶数页的右侧显示章名
+\fancyhead[LO]{\rightmark}    % 在奇数页的左侧显示小节名
+
+% 设置页脚：在每页的右下脚以斜体显示书名
+% \fancyfoot[RO,RE]{bukunu}
+\fancyfoot[LE,RO]{~\thepage~} % 在偶数页的左侧，奇数页的右侧显示页码
+
+\renewcommand{\headrulewidth}{0.7pt} % 页眉与正文之间的水平线粗细
+\renewcommand{\footrulewidth}{0pt}
+
+
+   %  \fancyfoot[C]{Page \thepage\
+   %                    of \pageref{LastPage}}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{colorKeyword}{RGB}{0,0,150} 
+\definecolor{colorNdkeyword}{RGB}{0,100,0} 
+\definecolor{colorComment}{RGB}{0,0,0} 
+\definecolor{colorIdentifier}{RGB}{0,0,100}  % 标志：主要颜色
+\definecolor{colorString}{RGB}{150,0,0}   % 字符串
+
+\usepackage{listings} % 进行语法高亮显示
+\lstset %定义程序代码显示版面，可自定义 。
+{language=Python,
+% frame=\topline\bottomline, % 边框
+%frame=\single,
+numbers=left,
+numberstyle=\ttfamily\tiny\color{gray},
+% Frame设置
+backgroundcolor=\color{white}, 
+rulecolor= \color{gray},
+% fillcolor= color command
+% rulesepcolor= color command
+frame=tb,
+framexleftmargin=0mm,
+frameround=ffff,
+framesep=0pt,
+rulesep=0pt,  % control the space between frame and listing and between double rules.
+framerule=0.2pt,  % controls the width of the rules.
+%  
+basicstyle=\ttfamily\footnotesize, % 设置字体
+basewidth=0.6em,
+% baseheight=0.8em,
+keywordstyle=\ttfamily\bf\color{colorKeyword},
+ndkeywordstyle=\ttfamily\bf\color{colorNdkeyword},
+commentstyle=\color{colorComment},
+identifierstyle=\ttfamily\color{colorIdentifier}\bfseries,
+stringstyle=\color{colorString}\ttfamily,showstringspaces=false,
+breaklines=true,
+extendedchars=true,
+% escapeinside=``
+}
+
+% \lstdefinestyle{shownumber} {numbers=left, stepnumber=1, numberstyle=\tiny, numbersep=10pt}
+\lstdefinestyle{nonumber} {numbers=none}
+
+\lstdefinestyle{MyFrame}{backgroundcolor=\color{white}, basicstyle=\ttfamily\footnotesize}
+
+\lstdefinestyle{MyPython} {language=Python,style=nonumber,style=MyFrame}
+\lstdefinestyle{MyBash} {language=Bash,style=nonumber,style=MyFrame}
+\lstdefinestyle{MyYX} {language=Python,style=nonumber,style=MyFrame,frame=tlrb}
+
+
+
+% \lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
+% \lstset{extendedchars=false}%这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+% \lstset{language=Python}%这条命令可以让LaTeX排版时将关键字突出显示
+% \lstset{breaklines}%这条命令可以让LaTeX自动将长的代码行换行排版
+% \lstset{extendedchars=false}%这一条命令可以解决代码跨页时，章节标题，页眉等汉字不显示的问题
+% \lstset{language=c,extendedchar=false}
+%
+%
+
+\definecolor{shadecolor}{gray}{0.85} %代码背景色灰色
+\setmainfont[BoldFont=Times New Roman, Mapping=tex-text]{Times New Roman} % 文中出现的英文
+\setCJKmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}  % 文中出现的中文
+\setCJKmonofont{Adobe Song Std}   % 设置公式或代码中出现的中文
+
+% \setmainfont[BoldFont=AdobeHeitiStd-Regular]{AdobeSongStd-Light} %默认UMing字体，加粗的时候就用wqy zen hei
+% \setCJKmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}  % 文中出现的中文
+% \setCJKmonofont{Pragmata}   % 设置公式或代码中出现的中文
+
+
+
+\XeTeXlinebreaklocale "zh" %我们处理的文件是中文的
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt %中文自动断行
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 设定列表等的参数
+
+\usepackage{enumitem}
+    \setenumerate[1]{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
+    \setitemize[1]{itemsep=18pt,partopsep=10pt,parsep=\parskip,topsep=8pt}
+    \setdescription{itemsep=10pt,partopsep=10pt,parsep=\parskip,topsep=5pt}
+
+% 解决默认的itemize存在行距过大的问题
+\usepackage{paralist}    
+\let\itemize\compactitem
+\let\enditemize\endcompactitem
+\let\enumerate\compactenum
+\let\endenumerate\endcompactenum
+\let\description\compactdesc
+\let\enddescription\endcompactdesc
+
+% list 参数配置命令
+% 默认的列表前导样式
+% \renewcommand\labelitemi{\small $\triangleright$} % $\cdot$
+\renewcommand\labelitemi{\tiny $^\bullet$} % 字号变号，同时又向上一点
+
+
+% 自定义 itemize -- 未使用
+\newenvironment{bkitemize}[1][]{%%%%%定义新环境
+\begin{list}  % {{\hei #1}} %%标签格式
+    {
+         \setlength{\leftmargin}{0cm}     %左边界
+         \setlength{\parsep}{0ex}         %段落间距
+         \setlength{\topsep}{0bp}         %列表到上下文的垂直距离
+         \setlength{\itemsep}{0ex}        %标签间距
+         \setlength{\labelsep}{0.3em}     %标号和列表项之间的距离,默认0.5em
+         \setlength{\itemindent}{3em}    %标签缩进量
+         \setlength{\listparindent}{5em} %段落缩进量
+        }}
+{\end{list}}%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+
+
+\frenchspacing
+
+% \widowpenalty=10000  
+\setlength\baselineskip{12pt}
+\setlength{\baselineskip}{1.6em} % 行距
+\setlength{\parskip}{0pt} % 段落间距
+
+% \renewcommand{\contentsname}{目录}
+% \setcounter{tocdepth}{2} %目录深度为二级
+
+
+% 设置中文正文字号
+\newlength{\mmfontsize}
+\setlength{\mmfontsize}{11pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\contentsname}{目录}
+\setcounter{tocdepth}{4} %1的话为章加节；４的话到paragraph 目录深度为二级
+% \tableofcontents
+\renewcommand{\listfigurename}{图形清单}
+% \listoffigures # 列出图形
+\renewcommand{\listtablename}{表格清单}
+% \listoftables  # 列出表格
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+\hbadness=10000 \tolerance=10000 \hfuzz=150pt
