@@ -1,5 +1,6 @@
 *.pyc
 .idea
+helper
 gdata_bak
 gdata
 gdata2
@@ -15,3 +16,4 @@ pygis.pdf
 *.aux
 *.png
 *.jpg
+*.pdf
