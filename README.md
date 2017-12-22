@@ -18,6 +18,11 @@ Author: [Bu Kun](http://www.osgeo.cn)
 
 ## 使用单元测试 nose
 
+首先获取 `helper`
+
+    git clone https://github.com/bukun/tex_helper.git helper
+
+单元测试，使用下面命令：
 
     nosetests3  --exe -v -d pygis_src
 
@@ -34,4 +39,5 @@ Author: [Bu Kun](http://www.osgeo.cn)
 
 ## Updating notes
 
+20171222: Clean the codes.
 20170808: The Latex files were merged into the codes.
