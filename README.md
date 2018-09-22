@@ -4,7 +4,8 @@ Author: [Bu Kun](http://www.osgeo.cn)
 
 本代码为《Python与开源GIS》一书的脚本。
 
-代码是作为学习使用，大概复制、粘贴了来用最好。因为代码中用到了一些数据，
+代码是作为学习使用，复制、粘贴了来用最好。
+因为代码中用到了一些数据，
 所以先行切换到数据目录下使用，免得找不到数据。
 
 ## 安装与配置
@@ -24,11 +25,11 @@ Author: [Bu Kun](http://www.osgeo.cn)
 
 单元测试，使用下面命令：
 
-    nosetests3  --exe -v -d pygis_src
+    nosetests3 -v -d --exe part010
 
 或者使用（会打印出来信息）： 
 
-    nosetests3  --exe -v -d -s pygis_src
+    nosetests3 -v -d -s --exe part010
 
 ## 注意
 为了使 nosetests 能够对代码进行测试运行，文件需要按下面的要求进行组织：
@@ -39,5 +40,6 @@ Author: [Bu Kun](http://www.osgeo.cn)
 
 ## Updating notes
 
-20171222: Clean the codes.
-20170808: The Latex files were merged into the codes.
+* 20180922: 第二次校稿更新1
+* 20171222: Clean the codes.
+* 20170808: The Latex files were merged into the codes.
