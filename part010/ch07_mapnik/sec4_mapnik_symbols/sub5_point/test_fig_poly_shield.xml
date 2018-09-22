@@ -1,0 +1,18 @@
+<Map background-color="#efefef" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <Style name="My Style">
+        <Rule>
+            <PolygonSymbolizer fill="#ffffff"/>
+            <LineSymbolizer stroke="rgb(50%,50%,50%)" stroke-width="1" stroke-dasharray="8,20"/>
+            <ShieldSymbolizer face-name="DejaVu Sans Bold" size="16" halo-fill="yellow" halo-radius="1" fill="#000000"
+                              file="/gdata/fig_data/turtle.png" spacing="100" transform="scale(2.0,2.0)">[name]
+            </ShieldSymbolizer>
+        </Rule>
+    </Style>
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">/gdata/fig_data/fig_data_poly.shp</Parameter>
+        </Datasource>
+    </Layer>
+</Map>

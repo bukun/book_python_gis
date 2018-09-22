@@ -1,0 +1,55 @@
+<Map background-color="#efefef" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <Style name="My Style">
+        <Rule>
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="20" placement="point"
+                            allow-overlap="true">[name]
+            </TextSymbolizer>
+            <Filter>[id] = 1</Filter>
+        </Rule>
+        <Rule>
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="20" placement="point"
+                            allow-overlap="true" vertical-alignment="MIDDLE">[name]
+            </TextSymbolizer>
+            <Filter>[id] = 2</Filter>
+        </Rule>
+        <Rule>
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="20" placement="point"
+                            allow-overlap="true" vertical-alignment="bottom"
+                            horizontal-alignment="right" justify-alignment="right">[name]
+            </TextSymbolizer>
+            <Filter>[id] = 3</Filter>
+        </Rule>
+        <Rule>
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="20" placement="point"
+                            allow-overlap="true" dx="2" dy="25" character-spacing="3">[name]
+            </TextSymbolizer>
+            <Filter>[id] = 4</Filter>
+        </Rule>
+        <Rule>
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="20" placement="point"
+                            allow-overlap="true" vertical-alignment="BOTTOM" orientation="45">[name]
+            </TextSymbolizer>
+            <Filter>[id] = 5</Filter>
+        </Rule>
+        <Rule>
+
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="20" halo-fill="red" halo-radius="2"
+                            placement="point" allow-overlap="true">[name]
+            </TextSymbolizer>
+            <Filter>[id] = 6</Filter>
+        </Rule>
+    </Style>
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">/gdata/fig_data/fig_data_pt.shp</Parameter>
+        </Datasource>
+    </Layer>
+</Map>

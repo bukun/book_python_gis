@@ -1,0 +1,20 @@
+<Map background-color="#ffffff" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <Style name="My Style">
+        <Rule>
+            <PolygonSymbolizer fill="#efefef"/>
+            <LineSymbolizer stroke="rgb(50%,50%,50%)" stroke-width="1" stroke-dasharray="8,20"/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="10" fill="black"
+                            placement="line" allow-overlap="false" spacing="100">
+                [name]
+            </TextSymbolizer>
+
+        </Rule>
+    </Style>
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">/gdata/fig_data/fig_data_poly.shp</Parameter>
+        </Datasource>
+    </Layer>
+</Map>

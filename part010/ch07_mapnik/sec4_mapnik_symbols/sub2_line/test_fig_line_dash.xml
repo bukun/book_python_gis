@@ -1,0 +1,46 @@
+<Map background-color="#efefef" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <Style name="My Style">
+        <Rule>
+            <LineSymbolizer stroke="rgb(50%,50%,50%)" stroke-dasharray="8,20"/>
+            <Filter>[id] = 1</Filter>
+        </Rule>
+    </Style>
+    <Style name="My Style2">
+        <Rule>
+            <LineSymbolizer stroke="rgb(50%,50%,50%)" stroke-width="8" stroke-dasharray="8,20"/>
+            <Filter>[id] = 2</Filter>
+        </Rule>
+    </Style>
+    <Style name="My Style3">
+        <Rule>
+            <LineSymbolizer stroke="rgb(50%,50%,50%)" stroke-width="3" stroke-dasharray="6,6"/>
+            <Filter>[id] = 3</Filter>
+        </Rule>
+    </Style>
+    <Style name="My Style4">
+        <Rule>
+            <LineSymbolizer stroke="#000000" stroke-width="2" stroke-linejoin="miter"/>
+        </Rule>
+    </Style>
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">/gdata/fig_data/fig_data_line3.shp</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style2</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">/gdata/fig_data/fig_data_line3.shp</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style3</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">/gdata/fig_data/fig_data_line3.shp</Parameter>
+        </Datasource>
+    </Layer>
+</Map>

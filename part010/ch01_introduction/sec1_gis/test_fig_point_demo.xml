@@ -1,0 +1,29 @@
+<Map background-color="#efefef" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    <Style name="My Style">
+
+
+        <Rule>
+            <!--<LineSymbolizer stroke="rgb(85%,85%,85%)" stroke-width="20" stroke-linejoin="miter"/>-->
+            <!--<LineSymbolizer stroke="rgb(85%,85%,85%)" stroke-width="20" stroke-linecap="round"/>-->
+            <!--<Filter>[id] = 1</Filter>-->
+            <PointSymbolizer/>
+            <TextSymbolizer face-name="DejaVu Sans Book" size="10" placement="point"
+                            allow-overlap="true" dx="5" dy="-10">'(' + [x] + ','+ [y] + ')'
+            </TextSymbolizer>
+        </Rule>
+
+
+    </Style>
+
+
+    <Layer name="world" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>My Style</StyleName>
+        <Datasource>
+            <Parameter name="type">shape</Parameter>
+            <Parameter name="file">./xx_demo_point.shp</Parameter>
+
+        </Datasource>
+    </Layer>
+
+
+</Map>
