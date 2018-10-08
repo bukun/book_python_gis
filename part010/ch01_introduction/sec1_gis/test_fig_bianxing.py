@@ -8,6 +8,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
+matplotlib.use('Agg')
+
 fig, ax = plt.subplots(nrows=2, ncols=2)
 
 fig = matplotlib.pyplot.gcf()
@@ -29,7 +31,6 @@ for lon in range(0, 360, 20):
         m.tissot(lon, lat, 4, 50)
 
 # plt.show()
-
 
 
 ###########################################################################

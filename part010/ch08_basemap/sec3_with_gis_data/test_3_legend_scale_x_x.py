@@ -57,7 +57,7 @@ colormesh = mymap.pcolormesh(xx, yy, data, vmin = 500, vmax = 1300, cmap=cmap)
 contour = mymap.contour(xx, yy, data, range(500, 1350, 50), colors = 'k', linestyles = 'solid')
 mymap.colorbar(colormesh)
 ################################################################################
-cb = mymap.colorbar(mappable=colormesh, location='bottom', label="contour lines")
+cb = mymap.colorbar(mappable=colormesh, location='bottom', label="等高线")
 cb.add_lines(contour)
 cb.set_ticks([600, 760, 1030, 1210])
 

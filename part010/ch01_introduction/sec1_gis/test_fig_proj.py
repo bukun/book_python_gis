@@ -4,10 +4,11 @@ from helper.textool import get_tmp_file
 import os
 import numpy as np
 import matplotlib
-matplotlib.use('Agg')
 
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
+
+matplotlib.use('Agg')
 
 plt.clf()
 

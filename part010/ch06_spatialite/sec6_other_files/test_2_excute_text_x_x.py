@@ -13,6 +13,7 @@ cvs_text = '''Author,Book,Lang,Category,Price
 with open('xx_out.txt', 'w') as fo:
     fo.write(cvs_text)
 ################################################################################
+
 import sqlite3 as sqlite
 conn = sqlite.connect(':memory:')
 conn.enable_load_extension(True)
@@ -26,9 +27,11 @@ for rec in cur:
     print(rec)
 ################################################################################
 ################################################################################
+
 sql = '''SELECT Book, Author FROM Books
      WHERE Category = 'Literature' AND Price < 10 AND Lang =
     'English'; '''
+
 cur.execute(sql)
 for rec in cur:
     print(rec)

@@ -5,7 +5,6 @@ from helper.textool import get_tmp_file
 ################################################################################
 import os, mapnik
 from gispy_helper import renderit
-################################################################################
 line_symbolizer = mapnik.LineSymbolizer()
 m = renderit(line_sym = line_symbolizer)
 
@@ -42,8 +41,8 @@ ly1 = mapnik_lyr(m, data=line_data, line_sym=line_symbolizer)
 ################################################################################
 line_symbolizer2 = mapnik.LineSymbolizer()
 line_symbolizer2.stroke = mapnik.Color("#ffd3a9")
-line_symbolizer2.stroke_opacity = 0.8
 line_symbolizer2.stroke_width = 10.0
+line_symbolizer2.stroke_opacity = 0.8
 ly2 = mapnik_lyr(m, data=line_data, line_sym=line_symbolizer2)
 ################################################################################
 m.layers.append(ly1)

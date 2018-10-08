@@ -8,6 +8,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
+matplotlib.use('Agg')
+
 fig = matplotlib.pyplot.gcf()
 fig.set_size_inches(18.5, 5)
 
@@ -38,7 +40,6 @@ my_map2.drawmeridians(np.arange(0, 360, 30))
 my_map2.drawparallels(np.arange(-90, 90, 30))
 
 # plt.show()
-
 
 
 plt.savefig(get_tmp_file(__file__, '1', file_ext='png'))

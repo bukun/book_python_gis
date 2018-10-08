@@ -15,4 +15,4 @@ donut.representative_point().wkt
 from shapely.geometry import Point
 point = Point(10, 10)
 pt_buf = point.buffer(5)
-print(pt_buf.wkt)
+pt_buf.wkt

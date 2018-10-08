@@ -17,20 +17,26 @@ cursor = conn.cursor()
 ################################################################################
 cursor.execute('CREATE TABLE MyTable (name TEXT NOT NULL, geom BLOB NOT NULL)')
 ################################################################################
-cursor.execute("INSERT INTO MyTable (name, geom) VALUES ('one', GeomFromText('POINT(1 1)'))")
-cursor.execute("INSERT INTO MyTable (name, geom) VALUES ('two', GeomFromText('POINT(2 2)'))")
-cursor.execute("INSERT INTO MyTable (name, geom) VALUES ('three', GeomFromText('POINT(3 3)'))")
+cursor.execute('''INSERT INTO MyTable (name, geom) VALUES
+    ('one', GeomFromText('POINT(1 1)'))''')
+cursor.execute('''INSERT INTO MyTable (name, geom) VALUES
+    ('two', GeomFromText('POINT(2 2)'))''')
+cursor.execute('''INSERT INTO MyTable (name, geom) VALUES
+    ('three', GeomFromText('POINT(3 3)'))''')
 ################################################################################
-cursor.execute("SELECT name, AsText(geom) FROM MyTable;")
+cursor.execute("SELECT name, AsText(geom) FROM MyTable")
 for rec in cursor:
     print(rec)
 ################################################################################
-cursor.execute("SELECT pk_uid, name, peoples, AsText(geometry) FROM Towns WHERE pk_uid = 8006")
+cursor.execute('''SELECT pk_uid, name, peoples, 
+    AsText(geometry) FROM Towns WHERE pk_uid = 8006")
 for rec in cursor:
     print(rec)
-cursor.execute('''UPDATE Towns SET peoples = 150000, name = 'MONZA',
-    geometry = GeomFromText('POINT(10 10)', 32632)  WHERE pk_uid = 8006''')
-cursor.execute("SELECT pk_uid, name, peoples, AsText(geometry) FROM Towns WHERE pk_uid = 8006")
+cursor.execute('''UPDATE Towns SET peoples = 150000,
+    name='MONZA', geometry=GeomFromText('POINT(10 10)',
+    32632)  WHERE pk_uid = 8006''')
+cursor.execute('''SELECT pk_uid, name, peoples, 
+    AsText(geometry) FROM Towns WHERE pk_uid = 8006''')
 for rec in cursor:
     print(rec)
 ################################################################################

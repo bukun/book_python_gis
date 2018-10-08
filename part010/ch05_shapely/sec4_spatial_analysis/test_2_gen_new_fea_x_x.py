@@ -29,15 +29,18 @@ len(clean)
 list(clean[0].exterior.coords)
 list(clean[1].exterior.coords)
 ################################################################################
-Point(0, 0).convex_hull
+Point(0, 0).convex_hull.wkt
 from shapely.geometry import MultiPoint
-MultiPoint([(0, 0), (1, 1)]).convex_hull
-MultiPoint([(0, 0), (1, 1), (1, -1)]).convex_hull
+MultiPoint([(0, 0), (1, 1)]).convex_hull.wkt
+MultiPoint([(0, 0), (1, 1), (1, -1)]).convex_hull.wkt
 ################################################################################
 from shapely.geometry import Point
-Point(0, 0).envelope
+Point(0, 0).envelope.wkt
+################################################################################
 from shapely.geometry import MultiPoint
-MultiPoint([(0, 0), (1, 1)]).envelope
+MultiPoint([(0,1), (2, 1), (3, 1)]).envelope.wkt
+################################################################################
+MultiPoint([(1,0),(3, 0.6),(1.5, 2),(0, 1.4)]).envelope.wkt
 ################################################################################
 p = Point(0.0, 0.0)
 x = p.buffer(1.0)

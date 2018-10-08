@@ -13,5 +13,6 @@ layer.GetExtent()
 feature = layer.GetFeature(0)
 geom = feature.GetGeometryRef()
 geom.GetEnvelope()
+################################################################################
 geom.GetSpatialReference()
 dir(geom)

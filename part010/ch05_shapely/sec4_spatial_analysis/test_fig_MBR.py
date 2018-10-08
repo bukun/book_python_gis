@@ -13,28 +13,29 @@ fig.set_frameon(True)
 # 1
 ax = fig.add_subplot(121)
 
-points2 = MultiPoint([(0, 0), (2, 2)])
+points2 = MultiPoint([(0,1), (2, 1), (3, 1)])
 for p in points2:
     ax.plot(p.x, p.y, 'o', color=DARKGRAY)
 hull2 = points2.convex_hull
 plot_line(ax, hull2, color=GRAY, alpha=0.5, zorder=2)
 
-ax.set_title('a) 点的数据为 2时',fontproperties=font_song)
+ax.set_title('a) 点分布在水平线上',fontproperties=font_song)
 
 set_limits(ax, -1, 4, -1, 3)
 
 # 2
 ax = fig.add_subplot(122)
 
-points1 = MultiPoint([(0, 0), (1, 1), (0, 2), (2, 2), (3, 1), (1, 0)])
+points1 = MultiPoint([(1,0), (3, 0.6), (1.5, 2), (0, 1.4)])
 
 for p in points1:
     ax.plot(p.x, p.y, 'o', color=DARKGRAY)
-hull1 = points1.convex_hull
+hull1 = points1.envelope
+
 patch1 = PolygonPatch(hull1, facecolor=GRAY, edgecolor=GRAY, alpha=0.5, zorder=2)
 ax.add_patch(patch1)
 
-ax.set_title('b) 点的数目大于 2时',fontproperties=font_song)
+ax.set_title('b) 通常情况下的多个点',fontproperties=font_song)
 
 set_limits(ax, -1, 4, -1, 3)
 

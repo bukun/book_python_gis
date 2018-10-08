@@ -8,6 +8,8 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib
 import matplotlib.pyplot as plt
 
+matplotlib.use('Agg')
+
 fig = matplotlib.pyplot.gcf()
 fig.set_size_inches(10, 6)
 
