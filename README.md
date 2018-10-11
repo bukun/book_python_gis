@@ -17,6 +17,11 @@ Author: [Bu Kun](http://www.osgeo.cn)
     aptitude install python3-nose
 
 
+Build database: 
+
+    ogr2ogr -f SQLite -dsco SPATIALITE=YES xx_china.db /gdata/stats_county.shp -nlt polygon
+
+
 ## 使用单元测试 nose
 
 首先获取 `helper`

@@ -24,10 +24,6 @@ res = cur.execute(sql)
 for rec in res:
     print(rec)
 ################################################################################
-del_sql = 'DELETE FROM gshhs WHERE id > 10'
-cur.execute(del_sql)
-sql = 'SELECT count(*) FROM gshhs'
-res = cur.execute(sql)
 conn.rollback()
 res = cur.execute(sql)
 for rec in res:

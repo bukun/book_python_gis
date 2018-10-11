@@ -38,7 +38,7 @@ for rec in cursor:
     print(rec)
 cursor.execute('''UPDATE gshhs SET
     name='北京1', geom=GeomFromText('POINT(10 10)',
-    32632)  WHERE id = 32''')
+    4326)  WHERE id = 32''')
 cursor.execute('''SELECT id, name, 
     AsText(geom) FROM gshhs WHERE id = 32''')
 for rec in cursor:

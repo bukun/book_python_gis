@@ -5,16 +5,17 @@ from helper.textool import get_tmp_file
 ################################################################################
 import os; import sqlite3 as sqlite
 # dbfile = '/tmp/xx_shapedb.sqlite'
-dbfile = '/home/gislite/xx_china.db'
+dbfile = 'xx_china.db'
 # if os.path.exists(dbfile): os.remove(dbfile)
 ################################################################################
 db = sqlite.connect(dbfile)
 db.enable_load_extension(True)
 db.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = db.cursor()
-cursor.execute('SELECT InitSpatialMetaData();')
+
 ################################################################################
 cursor.execute("DROP TABLE IF EXISTS gshhs")
+
 
 # cursor.execute("CREATE TABLE gshhs (" +
 # "id INTEGER PRIMARY KEY AUTOINCREMENT, " +

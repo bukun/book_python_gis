@@ -20,32 +20,32 @@ recs = cursor.execute("SELECT count (*) FROM gshhs;")
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = '''SELECT count(*) FROM gshhs WHERE MBRContains(
+sql = '''SELECT count(*) FROM stats_county WHERE MBRContains(
     GeomFromText('POLYGON((554000 4692000, 770000 4692000, 770000 4925000,
-    554000 4925000, 554000 4692000))'), geom)'''
+    554000 4925000, 554000 4692000))'), geometry)'''
 cursor.execute(sql)
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = '''SELECT count(*) FROM gshhs WHERE MBRContains( BuildMBR(554000, 
-    4692000, 770000, 4925000), geom);'''
+sql = '''SELECT count(*) FROM stats_county WHERE MBRContains( BuildMBR(554000, 
+    4692000, 770000, 4925000), geometry);'''
 cursor.execute(sql)
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = '''SELECT count (*) FROM gshhs WHERE MBRContains(BuildMBR (654000,
-    4692000, 770000, 4924000), geom);'''
+sql = '''SELECT count (*) FROM stats_county WHERE MBRContains(BuildMBR (654000,
+    4692000, 770000, 4924000), geometry);'''
 cursor.execute(sql)
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = '''SELECT count (*) FROM gshhs WHERE MBRWithin( geom , BuildMBR (
-    754000, 4692000, 770000, 4924000))'''
+sql = '''SELECT count (*) FROM stats_county WHERE MBRWithin( geometry , BuildMBR (
+    654000, 4692000, 770000, 4924000))'''
 res = cursor.execute(sql)
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = '''SELECT count (*) FROM HighWays WHERE MBRIntersects(BuildMBR(
+sql = '''SELECT count (*) FROM stats_county WHERE MBRIntersects(BuildMBR(
     754000, 4692000, 770000, 4924000), geometry)'''
 cursor.execute(sql)
 for rec in cursor:
