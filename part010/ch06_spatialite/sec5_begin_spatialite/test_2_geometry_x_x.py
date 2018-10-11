@@ -4,7 +4,7 @@ print(__file__)
 from helper.textool import get_tmp_file
 ################################################################################
 import sqlite3 as sqlite
-conn = sqlite.connect("/gdata/test-2.3.sqlite")
+conn = sqlite.connect("/home/gislite/xx_china.db")
 conn.enable_load_extension(True)
 conn.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = conn.cursor()
@@ -27,22 +27,22 @@ cursor = cursor.execute(sql)
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = 'SELECT name, AsText(Geometry) FROM Regions WHERE PK_UID = 52'
+sql = 'SELECT name, AsText(Geometry) FROM stats_county WHERE ogc_fid = 52'
 cursor.execute(sql)
 for rec in cursor:
     print(rec)
 ################################################################################
-sql = '''SELECT PK_UID, Area(Geometry), AsText(Centroid(Geometry)),
-             Dimension(Geometry), GeometryType(Geometry) FROM Regions
+sql = '''SELECT ogc_fid, Area(Geometry), AsText(Centroid(Geometry)),
+             Dimension(Geometry), GeometryType(Geometry) FROM stats_county
              ORDER BY Area(Geometry) DESC LIMIT 5'''
 cursor.execute(sql)
 for x in cursor:
    print(x)
 ################################################################################
-sql = '''SELECT PK_UID, NumInteriorRings(Geometry),
+sql = '''SELECT ogc_fid, NumInteriorRings(Geometry),
         NumPoints(ExteriorRing(Geometry)),
         NumPoints(InteriorRingN(Geometry, 1))
-        FROM regions ORDER BY NumInteriorRings(Geometry) DESC LIMIT 5'''
+        FROM stats_county ORDER BY NumInteriorRings(Geometry) DESC LIMIT 5'''
 cursor.execute(sql)
 for x in cursor:
    print(x)
@@ -50,7 +50,7 @@ for x in cursor:
 sql = '''SELECT AsText(InteriorRingN(Geometry, 1)),
     AsText(PointN(InteriorRingN(Geometry, 1), 4)),
     X(PointN(InteriorRingN(Geometry, 1), 5))
-    FROM Regions WHERE PK_UID = 55'''
+    FROM stats_county WHERE ogc_fid = 2364'''
 cursor.execute(sql)
 for x in cursor:
    print(x)

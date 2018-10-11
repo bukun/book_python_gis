@@ -23,7 +23,7 @@ import sqlite3 as sqlite
 tmp_db = '/tmp/xx_new_db.sqlite'
 if os.path.exists(tmp_db):
     os.remove(tmp_db)
-shutil.copy("/gdata/test-2.3.sqlite", tmp_db)
+shutil.copy("xx_china.db", tmp_db)
 os.chmod(tmp_db, stat.S_IRUSR + stat.S_IWUSR)
 conn = sqlite.connect(tmp_db)
 conn.enable_load_extension(True)
@@ -37,17 +37,17 @@ cursor = cursor.execute('SELECT * FROM spatial_ref_sys LIMIT 5;')
 for rec in cursor:
     print(rec)
 ################################################################################
-cursor = cursor.execute('SELECT DISTINCT Srid(geometry) FROM Towns;')
+cursor = cursor.execute('SELECT DISTINCT Srid(geom) FROM gshhs;')
 for rec in cursor:
     print(rec)
-cursor = cursor.execute('''SELECT DISTINCT SRID(Towns.geometry), spatial_ref_sys.ref_sys_name FROM Towns,
-        spatial_ref_sys WHERE SRID(Towns.geometry) = spatial_ref_sys.srid;''')
+cursor = cursor.execute('''SELECT DISTINCT SRID(gshhs.geom), spatial_ref_sys.ref_sys_name FROM gshhs,
+        spatial_ref_sys WHERE SRID(gshhs.geom) = spatial_ref_sys.srid;''')
 for rec in cursor:
     print(rec)
 ################################################################################
 cursor.execute('BEGIN')
-cursor.execute("SELECT AddGeometryColumn('Towns', 'wgs84', 4326, 'POINT', 2)")
-cursor.execute("UPDATE Towns SET wgs84 = Transform(geometry, 4326);")
+cursor.execute("SELECT AddGeometryColumn('gshhs', 'wgs84', 4326, 'POINT', 2)")
+cursor.execute("UPDATE gshhs SET wgs84 = Transform(geom, 4326);")
 conn.commit()
-cursor.execute('SELECT AsText(geometry), Srid(geometry),AsText(wgs84), \
-    Srid(wgs84) FROM Towns LIMIT 5;')
+cursor.execute('SELECT AsText(geom), Srid(geom),AsText(wgs84), \
+    Srid(wgs84) FROM gshhs LIMIT 5;')

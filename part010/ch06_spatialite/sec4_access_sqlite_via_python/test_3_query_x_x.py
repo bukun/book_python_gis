@@ -10,7 +10,8 @@ db.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = db.cursor()
 ################################################################################
 import shapely.wkt
-LONDON = 'POINT(-0.1263 51.4980)'
+# LONDON = 'POINT(-0.1263 51.4980)'
+LONDON = 'POINT(39.8919 116.0680)'
 pt = shapely.wkt.loads(LONDON)
 cursor.execute("SELECT id,level,AsText(geom) " +
      "FROM gshhs WHERE id IN " +

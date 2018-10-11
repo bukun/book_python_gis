@@ -4,18 +4,17 @@ print(__file__)
 from helper.textool import get_tmp_file
 ################################################################################
 import sqlite3 as sqlite
-conn = sqlite.connect("/gdata/test-2.3.sqlite")
+conn = sqlite.connect("/home/gislite/xx_china.db")
 conn.enable_load_extension(True)
 conn.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = conn.cursor()
-################################################################################
-sql = '''SELECT name , peoples , AsText(Geometry) from Towns
-    where peoples > 350000 order by peoples DESC'''
+################################################################################ stats_county
+sql = '''SELECT name , AsText(Geom) from gshhs limit 5 ;'''
 cursor.execute(sql)
 for x in cursor:
     print(x)
 ################################################################################
-sql = 'SELECT name , X(Geometry), Y(Geometry) FROM Towns WHERE peoples > 350000 ORDER BY peoples DESC;'
+sql = 'SELECT name , X(Geom), Y(Geom) FROM gshhs  limit 5 ;'
 cursor.execute(sql)
 for x in cursor:
     print(x)

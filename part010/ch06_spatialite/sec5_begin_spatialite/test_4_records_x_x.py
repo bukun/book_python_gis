@@ -8,7 +8,8 @@ import sqlite3 as sqlite
 tmp_db = '/tmp/xx_new_db.sqlite'
 if os.path.exists(tmp_db):
     os.remove(tmp_db)
-shutil.copy("/gdata/test-2.3.sqlite", tmp_db)
+# shutil.copy("/gdata/test-2.3.sqlite", tmp_db)
+shutil.copy("xx_china.db", tmp_db)
 os.chmod(tmp_db, stat.S_IRUSR + stat.S_IWUSR)
 conn = sqlite.connect(tmp_db)
 conn.enable_load_extension(True)
@@ -28,27 +29,32 @@ cursor.execute("SELECT name, AsText(geom) FROM MyTable")
 for rec in cursor:
     print(rec)
 ################################################################################
-cursor.execute('''SELECT pk_uid, name, peoples, 
-    AsText(geometry) FROM Towns WHERE pk_uid = 8006")
+# cursor.execute('''SELECT id, name, popu,
+#     AsText(geometry) FROM stats_county WHERE ogc_fid = 2379''')
+
+cursor.execute('''SELECT id, name,
+    AsText(geom) FROM gshhs where id = 32''')
 for rec in cursor:
     print(rec)
-cursor.execute('''UPDATE Towns SET peoples = 150000,
-    name='MONZA', geometry=GeomFromText('POINT(10 10)',
-    32632)  WHERE pk_uid = 8006''')
-cursor.execute('''SELECT pk_uid, name, peoples, 
-    AsText(geometry) FROM Towns WHERE pk_uid = 8006''')
+cursor.execute('''UPDATE gshhs SET
+    name='北京1', geom=GeomFromText('POINT(10 10)',
+    32632)  WHERE id = 32''')
+cursor.execute('''SELECT id, name, 
+    AsText(geom) FROM gshhs WHERE id = 32''')
 for rec in cursor:
     print(rec)
 ################################################################################
-cursor.execute('CREATE TABLE Villages AS SELECT * FROM Towns WHERE peoples < 500')
+cursor.execute('CREATE TABLE Villages AS SELECT * FROM gshhs limit 10')
 conn.commit()
 ################################################################################
-cursor.execute('CREATE TABLE Metropolis ( Name TEXT NOT NULL, Population INTEGER NOT NULL, Geometry BLOB NOT NULL);')
-cursor.execute('''INSERT INTO Metropolis (Name, Population, Geometry)
-        SELECT name, peoples, geometry FROM Towns
-        WHERE peoples > 1000000;''')
+cursor.execute('CREATE TABLE Metropolis ( Name TEXT NOT NULL , Geometry BLOB NOT NULL);')
+cursor.execute('''INSERT INTO Metropolis (Name, Geometry)
+        SELECT name, geom FROM gshhs
+        limit 10;''')
 conn.commit()
-cursor.execute('SELECT name, population, AsText(geometry) FROM Metropolis')
+cursor.execute('SELECT name, AsText(geometry) FROM Metropolis')
+for rec in cursor:
+    print(rec)
 ################################################################################
 cursor.execute('DROP TABLE Villages')
 cursor.execute('DROP TABLE Metropolis')

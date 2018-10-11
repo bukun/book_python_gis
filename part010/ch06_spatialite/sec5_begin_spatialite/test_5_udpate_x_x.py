@@ -17,22 +17,27 @@ import sqlite3 as db
 conn = db.connect('/tmp/xx_new_db.sqlite')
 cur = conn.cursor()
 ################################################################################
-del_sql = 'DELETE FROM Towns WHERE peoples < 100000'
+del_sql = 'DELETE FROM gshhs where id > 10'
 cur.execute(del_sql)
-sql = 'SELECT count(*) FROM Towns'
+sql = 'SELECT count(*) FROM gshhs'
 res = cur.execute(sql)
-# res.next()
+for rec in res:
+    print(rec)
 ################################################################################
-del_sql = 'DELETE FROM Towns WHERE peoples < 100000'
+del_sql = 'DELETE FROM gshhs WHERE id > 10'
 cur.execute(del_sql)
-sql = 'SELECT count(*) FROM Towns'
+sql = 'SELECT count(*) FROM gshhs'
 res = cur.execute(sql)
 conn.rollback()
 res = cur.execute(sql)
+for rec in res:
+    print(rec)
 ################################################################################
-del_sql = 'DELETE FROM Towns WHERE peoples < 100000'
+del_sql = 'DELETE FROM gshhs WHERE id > 10'
 cur.execute(del_sql)
-sql = 'SELECT count(*) FROM Towns'
+sql = 'SELECT count(*) FROM gshhs'
 res = cur.execute(sql)
 conn.commit()
 res = cur.execute(sql)
+for rec in res:
+    print(rec)
