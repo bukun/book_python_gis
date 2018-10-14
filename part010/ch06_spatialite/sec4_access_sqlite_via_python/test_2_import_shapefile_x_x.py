@@ -2,11 +2,11 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
-import os; import sqlite3 as sqlite
-# dbfile = '/tmp/xx_shapedb.sqlite'
-dbfile = 'xx_china.db'
-# if os.path.exists(dbfile): os.remove(dbfile)
+import sqlite3 as sqlite
+dbfile = 'spalite.db'
+
 ################################################################################
 db = sqlite.connect(dbfile)
 db.enable_load_extension(True)
@@ -14,31 +14,29 @@ db.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = db.cursor()
 
 ################################################################################
-cursor.execute("DROP TABLE IF EXISTS gshhs")
+cursor.execute("DROP TABLE IF EXISTS pcapital")
+cursor.execute('''CREATE TABLE pcapital (id INTEGER PRIMARY
+    KEY AUTOINCREMENT,name varchar(100))''')
 
+cursor.execute('''CREATE INDEX pcapital_name on
+    pcapital(name)''')
 
-# cursor.execute("CREATE TABLE gshhs (" +
-# "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-# "level INTEGER)")
-cursor.execute("CREATE TABLE gshhs (" +
-"id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-"level INTEGER,"+
-"name varchar(100))")
-cursor.execute("CREATE INDEX gshhs_level on gshhs(level)")
+cursor.execute('''SELECT AddGeometryColumn('pcapital',
+    'geom', 4326, 'POINT', 2)''')
 
-cursor.execute("SELECT AddGeometryColumn('gshhs', 'geom', " +
-"4326, 'POINT', 2)")
-cursor.execute("SELECT CreateSpatialIndex('gshhs', 'geom')")
+cursor.execute("SELECT CreateSpatialIndex('pcapital', 'geom')")
 db.commit()
+
 ################################################################################
-import ogr
-# fName = '/gdata/GSHHS_c.shp'
+from osgeo import ogr
 fName = '/gdata/prov_capital.shp'
 shapefile = ogr.Open(fName)
 layer = shapefile.GetLayer(0)
+
 ################################################################################
-# sql_tpl = "INSERT INTO gshhs (level, geom) VALUES (2, GeomFromText('{0}', 4326))"
-sql_tpl = "INSERT INTO gshhs (level, name, geom) VALUES (2, '{0}', GeomFromText('{1}', 4326))"
+sql_tpl = '''INSERT INTO pcapital (name, geom) VALUES
+    ('{0}', GeomFromText('{1}', 4326))'''
+
 for i in range(layer.GetFeatureCount()):
     feature = layer.GetFeature(i)
     fd_name = feature.GetField('name')

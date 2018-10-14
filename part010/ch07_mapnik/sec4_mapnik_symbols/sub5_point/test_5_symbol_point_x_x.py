@@ -2,6 +2,7 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 import os, mapnik
 from gispy_helper import renderit
@@ -17,6 +18,7 @@ m.zoom_all()
 
 mapnik.render_to_file(m, get_tmp_file(__file__, '1'), 'png')
 mapnik.render_to_file(m, get_tmp_file(__file__, '1',file_ext='pdf'), 'pdf')
+
 ################################################################################
 symbolizer.file = '/gdata/fig_data/turtle.png'
 symbolizer.opacity = .8
@@ -27,7 +29,11 @@ m.zoom_all()
 
 mapnik.render_to_file(m, get_tmp_file(__file__, '2'), 'png')
 mapnik.render_to_file(m, get_tmp_file(__file__, '2',file_ext='pdf'), 'pdf')
+
 ################################################################################
+
 ################################################################################
+
 ################################################################################
+
 ################################################################################

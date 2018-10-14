@@ -1,3 +1,0 @@
-
-Source codes from Shapely.
-

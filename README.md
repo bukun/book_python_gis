@@ -17,7 +17,7 @@ Author: [Bu Kun](http://www.osgeo.cn)
     aptitude install python3-nose
 
 
-Build database: 
+Build database:
 
     ogr2ogr -f SQLite -dsco SPATIALITE=YES xx_china.db /gdata/stats_county.shp -nlt polygon
 
@@ -32,7 +32,7 @@ Build database:
 
     nosetests3 -v -d --exe part010
 
-或者使用（会打印出来信息）： 
+或者使用（会打印出来信息）：
 
     nosetests3 -v -d -s --exe part010
 
@@ -44,6 +44,7 @@ Build database:
 * 文件的命名，不得含有中文字符、减号、空格、英文句号，及其他奇怪字符；需要进行分隔，可使用下划线`_`。
 
 ## Updating notes
+* 20181014: 第二次校稿高新3
 * 20181008: 第二次校稿更新2
 * 20180922: 第二次校稿更新1
 * 20171222: Clean the codes.

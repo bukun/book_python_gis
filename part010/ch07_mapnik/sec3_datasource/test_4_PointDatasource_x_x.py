@@ -2,7 +2,9 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
+
 ################################################################################
 import os
 import mapnik
@@ -17,12 +19,14 @@ polygon_symbolizer.fill = mapnik.Color('#f2eff9')
 r.symbols.append(polygon_symbolizer)
 s.rules.append(r)
 m.append_style('My Style2', s)
+
 ################################################################################
 wkt_geom = 'POLYGON ((5 21,-18 -10, -16 -52, 37 -21, 5 21))'
 csv_string = '''
      wkt,Name
     "{wkt_geom}","test"
     '''.format(wkt_geom = wkt_geom)
+
 ds = mapnik.Datasource(**{"type": "csv", "inline": csv_string})
 layer2 = mapnik.Layer('world', '+proj=latlong +datum=WGS84')
 layer2.datasource = ds

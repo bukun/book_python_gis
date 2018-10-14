@@ -2,10 +2,12 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 import mapnik
 ds = mapnik.Shapefile(file='/gdata/GSHHS_c.shp')
 ds.envelope()
+
 ################################################################################
 import os
 stylesheet = '/gdata/world_map.xml'

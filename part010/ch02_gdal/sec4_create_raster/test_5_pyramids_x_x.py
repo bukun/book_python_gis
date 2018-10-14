@@ -2,9 +2,11 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 from osgeo import gdal
 gdal.SetConfigOption('HFA_USE_RRD', 'YES')
+
 ################################################################################
 dataset = gdal.Open("/gdata/lu75c.tif")
 width = dataset.RasterXSize

@@ -2,51 +2,55 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
-################################################################################
-import os,shutil,stat
-import sqlite3 as sqlite
-tmp_db = '/tmp/xx_new_db.sqlite'
-if os.path.exists(tmp_db):
-    os.remove(tmp_db)
 
-shutil.copy("xx_china.db", tmp_db)
-os.chmod(tmp_db, stat.S_IRUSR + stat.S_IWUSR)
-conn = sqlite.connect(tmp_db)
+################################################################################
+import sqlite3 as sqlite
+conn = sqlite.connect('spalite.db')
 conn.enable_load_extension(True)
 conn.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = conn.cursor()
+
 ################################################################################
-recs = cursor.execute("SELECT count (*) FROM gshhs;")
-for rec in cursor:
-    print(rec)
+cursor.execute("SELECT count (*) FROM county_popu;")
+cursor.fetchone()
+
 ################################################################################
-sql = '''SELECT count(*) FROM stats_county WHERE MBRContains(
-    GeomFromText('POLYGON((554000 4692000, 770000 4692000, 770000 4925000,
-    554000 4925000, 554000 4692000))'), geometry)'''
+from shapely.geometry import box
+sql = '''SELECT count(*) FROM county_popu WHERE
+    MBRContains(GeomFromText('{wkt}'), geometry)'''.format(
+    wkt = box(11265000,3729000,12391000,4488000).wkt)
+
 cursor.execute(sql)
-for rec in cursor:
-    print(rec)
+cursor.fetchone()
+
 ################################################################################
-sql = '''SELECT count(*) FROM stats_county WHERE MBRContains( BuildMBR(554000, 
-    4692000, 770000, 4925000), geometry);'''
+sql = '''SELECT count(*) FROM county_popu WHERE
+    MBRContains(BuildMBR(11265000,3729000,12391000,4488000),
+    geometry)'''
+
 cursor.execute(sql)
-for rec in cursor:
-    print(rec)
+cursor.fetchone()
+
 ################################################################################
-sql = '''SELECT count (*) FROM stats_county WHERE MBRContains(BuildMBR (654000,
-    4692000, 770000, 4924000), geometry);'''
+sql = '''SELECT count (*) FROM county_popu WHERE
+    MBRContains(BuildCircleMBR (11828000, 4108000, 500000),
+    geometry)'''
+
 cursor.execute(sql)
-for rec in cursor:
-    print(rec)
+cursor.fetchone()
+
 ################################################################################
-sql = '''SELECT count (*) FROM stats_county WHERE MBRWithin( geometry , BuildMBR (
-    654000, 4692000, 770000, 4924000))'''
+sql = '''SELECT count (*) FROM county_popu WHERE
+    MBRWithin( geometry , BuildMBR(
+    11265000,3729000,12391000,4488000))'''
+
 res = cursor.execute(sql)
-for rec in cursor:
-    print(rec)
+cursor.fetchone()
+
 ################################################################################
-sql = '''SELECT count (*) FROM stats_county WHERE MBRIntersects(BuildMBR(
-    754000, 4692000, 770000, 4924000), geometry)'''
+sql = '''SELECT count (*) FROM county_popu WHERE
+    MBRIntersects(BuildMBR(11265000,3729000,
+    12391000,4488000), geometry)'''
+
 cursor.execute(sql)
-for rec in cursor:
-    print(rec)
+cursor.fetchone()

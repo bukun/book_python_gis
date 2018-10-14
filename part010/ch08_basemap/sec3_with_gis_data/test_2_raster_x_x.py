@@ -2,6 +2,7 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 from mpl_toolkits.basemap import Basemap
 import matplotlib
@@ -18,7 +19,9 @@ para = {
     'llcrnrlat': 41.583851612359275,
     'urcrnrlon': 1.841589961763497,
     'urcrnrlat': 41.598674173123 }
+
 dem_tif = '/gdata/sample_files/dem.tiff'
+
 ################################################################################
 p1 = plt.subplot(121)
 mymap = Basemap(**para)
@@ -28,6 +31,7 @@ x = linspace(0, mymap.urcrnrx, data.shape[1])
 y = linspace(0, mymap.urcrnry, data.shape[0])
 xx, yy = meshgrid(x, y)
 cs = mymap.contour(xx, yy, data, range(400, 1500, 100), cmap=plt.cm.cubehelix)
+
 ################################################################################
 p2 = plt.subplot(122)
 mymap = Basemap(**para)

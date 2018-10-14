@@ -2,9 +2,13 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
+
 ################################################################################
+
 ################################################################################
+
 ################################################################################
 import os
 import mapnik
@@ -14,6 +18,7 @@ polygon_symbolizer = mapnik.PolygonSymbolizer()
 polygon_symbolizer2 = mapnik.PolygonSymbolizer()
 polygon_symbolizer.fill = mapnik.Color('#f2eff9')
 polygon_symbolizer2.fill = mapnik.Color('#ff0000')
+
 ################################################################################
 r = mapnik.Rule()
 r2 = mapnik.Rule()
@@ -21,15 +26,18 @@ r.symbols.append(polygon_symbolizer)
 r2.symbols.append(polygon_symbolizer2)
 r.filter = mapnik.Expression("[id] = 1")
 r2.filter = mapnik.Expression("[id] = 2")
+
 ################################################################################
 line_symbolizer = mapnik.LineSymbolizer()
 r.symbols.append(line_symbolizer)
 r2.symbols.append(line_symbolizer)
+
 ################################################################################
 s = mapnik.Style()
 s.rules.append(r)
 s.rules.append(r2)
 m.append_style('My Style', s)
+
 ################################################################################
 lyr = mapnik.Layer('world', "+proj=latlong +datum=WGS84")
 lyr.datasource = mapnik.Shapefile(file='/gdata/fig_data/fig_data_poly.shp')
@@ -41,8 +49,11 @@ m.zoom_all()
 
 mapnik.render_to_file(m, get_tmp_file(__file__, '1'), 'png')
 mapnik.render_to_file(m, get_tmp_file(__file__, '1',file_ext='pdf'), 'pdf')
+
 ################################################################################
+
 ################################################################################
+
 ################################################################################
 r3 = mapnik.Rule()
 r3.set_else(True)

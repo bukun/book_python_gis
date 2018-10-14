@@ -2,6 +2,7 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 import shapefile as shp
 import matplotlib
@@ -16,6 +17,7 @@ for xx in range(polys.numRecords):
     poly = s.__geo_interface__
     BLUE = '#6699cc'
     ax.add_patch(PolygonPatch(poly, fc=BLUE, ec=BLUE, alpha=0.5, zorder=2))
+
 ax.axis('scaled')
 
 # plt.show()

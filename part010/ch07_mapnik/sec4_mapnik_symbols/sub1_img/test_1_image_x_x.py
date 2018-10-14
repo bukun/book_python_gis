@@ -2,10 +2,12 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 import mapnik
 m = mapnik.Map(600, 500, "+proj=latlong +datum=WGS84")
 symbol = mapnik.RasterSymbolizer()
+
 ################################################################################
 s = mapnik.Style()
 r = mapnik.Rule()
@@ -17,8 +19,10 @@ layer = mapnik.Layer("myLayer")
 layer.datasource = datasource
 layer.styles.append('My Style')
 m.layers.append(layer)
+
 ################################################################################
 layer.envelope()
+
 ################################################################################
 m.zoom_to_box(layer.envelope())
 

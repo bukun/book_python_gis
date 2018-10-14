@@ -6,6 +6,7 @@ W = 8.0
 H = W*GM
 SIZE = (W, H)
 
+WHITE = '#ffffff'
 BLUE = '#6699cc'
 GRAY = '#999999'
 DARKGRAY = '#333333'

@@ -2,6 +2,7 @@
 print('=' * 40)
 print(__file__)
 from helper.textool import get_tmp_file
+
 ################################################################################
 import mapnik
 import cairo
@@ -17,10 +18,12 @@ m.zoom_to_box(bbox)
 
 mapnik.render_to_file(m, get_tmp_file(__file__, '1'), 'png')
 mapnik.render_to_file(m, get_tmp_file(__file__, '1',file_ext='pdf'), 'pdf')
+
 ################################################################################
 surface = cairo.SVGSurface('xx_a.svg', m.width, m.height)
 mapnik.render(m, surface)
 surface.finish()
+
 ################################################################################
 surface = cairo.PDFSurface('xx_a.pdf', m.width, m.height)
 mapnik.render(m, surface)
