@@ -3,6 +3,7 @@
 Author: [Bu Kun](http://www.osgeo.cn)
 
 本代码为《Python与开源GIS》一书的脚本。
+更详细的信息可查看网站： [http://www.osgeo.cn/py4gis/](http://www.osgeo.cn/py4gis/)
 
 代码是作为学习使用，复制、粘贴了来用最好。
 因为代码中用到了一些数据，
