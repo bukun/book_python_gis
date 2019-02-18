@@ -12,12 +12,13 @@ pprint(c.schema)
 ################################################################################
 rec = next(c)
 set(rec.keys()) - set(c.schema.keys())
-set(rec['properties'].keys()) == set(c.schema['properties'].keys())
+set(rec['properties'].keys()) == set(
+    c.schema['properties'].keys())
 
 ################################################################################
-pprint(fiona.FIELD_TYPES_MAP)
 
 ################################################################################
+
 type(rec['properties']['source'])
 c.schema['properties']['source']
 

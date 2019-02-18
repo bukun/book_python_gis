@@ -10,8 +10,8 @@ datasource = mapnik.Gdal(file="/gdata/foo.tif")
 ################################################################################
 
 ################################################################################
-datasource = mapnik.Ogr(file="/gdata/county_popu.shp",
-    layer="county_popu")
+datasource = mapnik.Ogr(file="/gdata/region_popu.shp",
+    layer="region_popu")
 
 ################################################################################
 

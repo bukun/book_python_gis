@@ -28,7 +28,9 @@ plt.savefig(get_tmp_file(__file__, '2', file_ext='pdf'), bbox_inches='tight', dp
 plt.clf()
 
 ################################################################################
-world.plot(column='gdp_per_cap', cmap='OrRd', scheme='quantiles');
+world.plot(column='gdp_per_cap', cmap='OrRd',
+    scheme='quantiles')
+
 
 # plt.show()
 
@@ -37,15 +39,17 @@ plt.savefig(get_tmp_file(__file__, '3', file_ext='pdf'), bbox_inches='tight', dp
 plt.clf()
 
 ################################################################################
-cities = gpd.read_file(gpd.datasets.get_path('naturalearth_cities'))
-cities.plot(marker='*', color='green', markersize=5);
+cities = gpd.read_file(gpd.datasets.get_path(
+    'naturalearth_cities'))
+
+cities.plot(marker='*', color='green', markersize=5)
 
 ################################################################################
 cities = cities.to_crs(world.crs)
 
 ################################################################################
 base = world.plot(color='white')
-cities.plot(ax=base, marker='o', color='red', markersize=5);
+cities.plot(ax=base, marker='o',color='red',markersize=5)
 
 # plt.show()
 

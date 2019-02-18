@@ -40,7 +40,9 @@ m.append_style('My Style', s)
 
 ################################################################################
 lyr = mapnik.Layer('world', "+proj=latlong +datum=WGS84")
-lyr.datasource = mapnik.Shapefile(file='/gdata/fig_data/fig_data_poly.shp')
+lyr.datasource = mapnik.Shapefile(
+    file='/gdata/fig_data/fig_data_poly.shp')
+
 lyr.styles.append('My Style')
 m.layers.append(lyr)
 m.zoom_all()

@@ -26,8 +26,7 @@ plt.clf()
 
 ################################################################################
 bsmap = Basemap(projection='aeqd', lon_0=180, lat_0=50)
-bsmap.drawmapboundary(fill_color='aqua')
-bsmap.fillcontinents(color='coral', lake_color='aqua')
+bsmap.drawmapboundary()
 bsmap.drawcoastlines()
 
 # plt.show()

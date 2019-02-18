@@ -18,10 +18,10 @@ with open('xx_out.txt', 'w') as fo:
 ################################################################################
 
 import sqlite3 as sqlite
-conn = sqlite.connect(':memory:')
-conn.enable_load_extension(True)
-conn.execute('SELECT load_extension("mod_spatialite.so.7")')
-cur = conn.cursor()
+con = sqlite.connect(':memory:')
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cur = con.cursor()
 sql = '''CREATE VIRTUAL TABLE books USING VirtualText(
     xx_out.txt, utf8, 1, COMMA, DOUBLEQUOTE, ',')'''
 
@@ -31,8 +31,6 @@ cur.execute(sql)
 cur.execute('PRAGMA table_info(books)')
 for rec in cur: print(rec)
 
-
-################################################################################
 
 ################################################################################
 cur.execute('''SELECT Book, Author FROM Books

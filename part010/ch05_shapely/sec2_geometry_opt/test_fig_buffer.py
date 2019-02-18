@@ -10,16 +10,29 @@ from descartes.patch import PolygonPatch
 from matplotlib.font_manager import FontProperties
 font_song = FontProperties(fname="/usr/share/fonts/xpfonts/simfang.ttf")
 
+
 from figures import BLUE, SIZE, set_limits, plot_coords, color_isvalid
+
+def the_poly():
+    from shapely.geometry import LinearRing
+    from shapely.geometry import Polygon
+    coords = [(0.5, 0.5), (1.5, 1.5), (1.5, 0.5)]
+    r = LinearRing(coords)
+    s = Polygon(r)
+
+    ################################################################################
+    t = Polygon(s.buffer(1.0).exterior, [r])
+    return t
 
 fig = pyplot.figure(1, figsize=SIZE, dpi=90)
 
 # 3: invalid polygon, ring touch along a line
 ax = fig.add_subplot(121)
 
-ext = [(0, 0), (0, 2), (2, 2), (2, 0), (0, 0)]
-int = [(0.5, 0), (1.5, 0), (1.5, 1), (0.5, 1), (0.5, 0)]
-polygon = Polygon(ext, [int])
+
+polygon = the_poly()
+
+
 
 plot_coords(ax, polygon.interiors[0])
 plot_coords(ax, polygon.exterior)

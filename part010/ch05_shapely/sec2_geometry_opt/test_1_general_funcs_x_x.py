@@ -11,7 +11,9 @@ Point(0,0).geom_type
 Point(0,0).distance(Point(1,1))
 
 ################################################################################
-donut = Point(0, 0).buffer(2.0).difference(Point(0, 0).buffer(1.0))
+donut = Point(0, 0).buffer(2.0).difference(
+    Point(0, 0).buffer(1.0))
+
 donut.centroid.wkt
 donut.representative_point().wkt
 

@@ -5,30 +5,30 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 from osgeo import gdal
-dataset = gdal.Open("/gdata/geotiff_file.tif")
+rds = gdal.Open("/gdata/geotiff_file.tif")
 
 ################################################################################
-dir(dataset)
+dir(rds)
 
 ################################################################################
-dataset.GetMetadata()
+rds.GetMetadata()
 
 ################################################################################
 ds = gdal.Open('/gdata/lu75c.tif')
 ds.GetMetadata()
 
 ################################################################################
-dataset.GetDescription()
+rds.GetDescription()
 
 ################################################################################
-dataset.RasterCount
+rds.RasterCount
 
 ################################################################################
 mds = gdal.Open("/gdata/MOD09A1.A2009193.h28v06.005.2009203125525.hdf")
 mds.RasterCount
 
 ################################################################################
-img_width,img_height = dataset.RasterXSize,dataset.RasterYSize
+img_width,img_height=rds.RasterXSize,rds.RasterYSize
 img_width,img_height
 
 ################################################################################

@@ -5,14 +5,14 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 import sqlite3 as sqlite
-db = sqlite.connect(':memory:')
+con = sqlite.connect(':memory:')
 
 ################################################################################
-db.enable_load_extension(True)
-db.execute('SELECT load_extension("mod_spatialite.so.7")')
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
 
 ################################################################################
-cursor = db.cursor()
+cursor = con.cursor()
 cursor.execute('''select name from sqlite_master where
     type='table' order by name''')
 

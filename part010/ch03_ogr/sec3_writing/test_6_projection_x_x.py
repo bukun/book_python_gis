@@ -5,10 +5,11 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 from osgeo import ogr
-ds = ogr.Open('/gdata/county_popu.shp')
+ds = ogr.Open('/gdata/region_popu.shp')
 layer = ds.GetLayer(0)
 spatialRef = layer.GetSpatialRef()
 print(spatialRef)
+...
 
 ################################################################################
 from osgeo import osr

@@ -81,20 +81,20 @@ cfg2 = {
     'concentrate': True,
 }
 
-for node_name in ['stats_conty.shp', 'xx_couties.shp']:
+for node_name in ['region_popu.shp', 'xx_couties.shp']:
     G.add_node(node_name, fillcolor="#ffffff", **cfg)
 
 cfg['style'] = 'filled'
-for node_name in ['stats_conty', 'new_county', 'new_county2']:
+for node_name in ['region_popu', 'new_region', 'new_region2']:
     G.add_node(node_name, fillcolor="#99ffff", **cfg)
 
-# for node_name in ['stats_conty', 'new_county', 'new_county2']:
+# for node_name in ['region_popu', 'new_region', 'new_region2']:
 #     G.add_node(node_name, fillcolor="#99ffff", **cfg2)
 
-G.add_edge('stats_conty.shp', 'stats_conty', label='ogr2ogr')
-G.add_edge('stats_conty', 'xx_couties.shp', label='.dump')
-G.add_edge('xx_couties.shp', 'new_county', '.loadshp')
-G.add_edge('xx_couties.shp', 'new_county2', '.loadshp')
+G.add_edge('region_popu.shp', 'region_popu', label='ogr2ogr')
+G.add_edge('region_popu', 'xx_couties.shp', label='.dump')
+G.add_edge('xx_couties.shp', 'new_region', '.loadshp')
+G.add_edge('xx_couties.shp', 'new_region2', '.loadshp')
 
 
 G.layout(prog='dot')  # default to neato

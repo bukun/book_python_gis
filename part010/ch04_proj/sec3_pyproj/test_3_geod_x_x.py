@@ -29,9 +29,9 @@ g = Geod(ellps='krass')
 
 ################################################################################
 lasa_lat = 29.6; lasa_lon = 91
-changchun_lat = 43.88333; changchun_lon = 125.35
+cc_lat = 43.88333; cc_lon = 125.35
 
 ################################################################################
-lonlats = g.npts(lasa_lon,lasa_lat,changchun_lon,changchun_lat,4)
+lonlats = g.npts(lasa_lon,lasa_lat,cc_lon,cc_lat,4)
 for lon,lat in lonlats: print('%6.3f  %7.3f' % (lat, lon))
 

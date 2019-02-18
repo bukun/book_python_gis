@@ -11,11 +11,13 @@ width = dataset.RasterXSize
 height = dataset.RasterYSize
 datas = dataset.ReadAsArray(0,0,width,height)
 driver = gdal.GetDriverByName("GTiff")
-tods = driver.Create("/tmp/x_geotiff_file_3.tif",width,height,3,options=["INTERLEAVE=PIXEL"])
-tods.WriteRaster(0,0,width,height,datas.tostring(),width,height,band_list=[1,2,3])
-tods.FlushCache()
+tods = driver.Create("/tmp/x_geotiff_file_3.tif",width,
+    height,3,options=["INTERLEAVE=PIXEL"])
 
-################################################################################
+tods.WriteRaster(0,0,width,height,datas.tostring(),width,
+    height,band_list=[1,2,3])
+
+tods.FlushCache()
 
 ################################################################################
 
@@ -29,6 +31,10 @@ for i in range(3):
 datas = numpy.concatenate(datas)
 
 ################################################################################
-tods = driver.Create("/tmp/x_geotiff_file_4.tif",width,height,3,options=["INTERLEAVE=PIXEL"])
-tods.WriteRaster(0,0,width,height,datas.tostring(),width,height,band_list=[1,2,3])
+tods = driver.Create("/tmp/x_geotiff_file_4.tif",width,
+    height,3,options=["INTERLEAVE=PIXEL"])
+
+tods.WriteRaster(0,0,width,height,datas.tostring(),width,
+    height,band_list=[1,2,3])
+
 tods.FlushCache()

@@ -24,10 +24,10 @@ if os.access(extfile, os.F_OK):
 
 
 newds = driver.CreateDataSource(extfile)
-layernew = newds.CreateLayer('rect', None, ogr.wkbPolygon)
+lyrn = newds.CreateLayer('rect', None, ogr.wkbPolygon)
 feat = layer.GetNextFeature()
 while feat is not None:
-    layernew.CreateFeature(feat)
+    lyrn.CreateFeature(feat)
     feat = layer.GetNextFeature()
 
 newds.Destroy()

@@ -20,9 +20,7 @@ shapely.geos.geos_version_string
 ################################################################################
 from shapely import speedups
 speedups.available
-speedups.enabled
 
 ################################################################################
 speedups.disable()
-speedups.enabled
 speedups.enable()

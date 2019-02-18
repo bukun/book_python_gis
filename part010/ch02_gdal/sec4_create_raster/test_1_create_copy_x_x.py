@@ -4,8 +4,6 @@ print(__file__)
 from helper.textool import get_tmp_file
 
 ################################################################################
-
-################################################################################
 import gdal
 src_filename = "/gdata/geotiff_file.tif"
 dst_filename = "/tmp/xx_geotiff_copy.tif"

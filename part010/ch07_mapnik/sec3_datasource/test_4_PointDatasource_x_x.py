@@ -27,7 +27,9 @@ csv_string = '''
     "{wkt_geom}","test"
     '''.format(wkt_geom = wkt_geom)
 
-ds = mapnik.Datasource(**{"type": "csv", "inline": csv_string})
+ds = mapnik.Datasource(
+    **{"type": "csv", "inline": csv_string})
+
 layer2 = mapnik.Layer('world', '+proj=latlong +datum=WGS84')
 layer2.datasource = ds
 layer2.styles.append('My Style2')

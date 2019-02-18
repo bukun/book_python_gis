@@ -24,7 +24,10 @@ world_layer.GetFeatureCount()
 
 ################################################################################
 world_layer_name = world_layer.GetName()
-result = world_ds.ExecuteSQL("SELECT * FROM {lyr} WHERE AREA > 800000".format(lyr=world_layer_name))
+result = world_ds.ExecuteSQL('''
+    SELECT * FROM {lyr} WHERE AREA > 800000
+    '''.format(lyr=world_layer_name))
+
 result.GetFeatureCount()
 
 ################################################################################

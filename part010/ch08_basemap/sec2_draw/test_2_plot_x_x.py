@@ -8,8 +8,7 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-para = {'projection': 'merc',
-    'lat_0': 0, 'lon_0': 120,
+para = {'projection': 'merc', 'lat_0': 0, 'lon_0': 120,
     'resolution': 'h', 'area_thresh': .1,
     'llcrnrlon': 116,  'llcrnrlat': 36.6,
     'urcrnrlon': 124,  'urcrnrlat': 40.2 }

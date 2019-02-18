@@ -5,15 +5,17 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 import sqlite3 as sqlite
-conn = sqlite.connect('spalite.db')
-conn.enable_load_extension(True)
-conn.execute('SELECT load_extension("mod_spatialite.so.7")')
-cursor = conn.cursor()
+con = sqlite.connect('spalite.db')
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cursor = con.cursor()
 
 ################################################################################
-cursor.execute('CREATE TABLE MyTable (name TEXT NOT NULL, geom BLOB NOT NULL)')
+cursor.execute('''CREATE TABLE MyTable (name TEXT NOT NULL,
+    geom BLOB NOT NULL)''')
 
 ################################################################################
+
 cursor.execute('''INSERT INTO MyTable (name, geom) VALUES
     ('one', GeomFromText('POINT(1 1)'))''')
 
@@ -43,7 +45,7 @@ cursor.execute('''UPDATE pcapital SET
 cursor.execute('''CREATE TABLE tab1 AS SELECT *
     FROM pcapital limit 10''')
 
-conn.commit()
+con.commit()
 
 ################################################################################
 cursor.execute('''CREATE TABLE tab2(Name TEXT NOT NULL,
@@ -52,7 +54,7 @@ cursor.execute('''CREATE TABLE tab2(Name TEXT NOT NULL,
 cursor.execute('''INSERT INTO tab2(Name, Geometry)
     SELECT name, geom FROM pcapital limit 4''')
 
-conn.commit()
+con.commit()
 
 ################################################################################
 cursor.execute('SELECT name, AsText(geometry) FROM tab2')

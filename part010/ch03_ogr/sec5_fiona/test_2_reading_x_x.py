@@ -45,9 +45,11 @@ to_string(c.crs)
 
 ################################################################################
 from fiona.crs import from_string
-from_string("+datum=WGS84 +ellps=WGS84 +no_defs +proj=longlat")
+from_string(
+    "+datum=WGS84 +ellps=WGS84 +no_defs +proj=longlat")
 
 ################################################################################
+
 from fiona.crs import from_epsg
 from_epsg(3857)
 

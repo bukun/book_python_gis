@@ -5,9 +5,9 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 from osgeo import gdal
-dataset = gdal.Open('/gdata/lu75c.tif')
-dataset.RasterCount
-band = dataset.GetRasterBand(1)
+rds = gdal.Open('/gdata/lu75c.tif')
+rds.RasterCount
+band = rds.GetRasterBand(1)
 
 ################################################################################
 dir(band)

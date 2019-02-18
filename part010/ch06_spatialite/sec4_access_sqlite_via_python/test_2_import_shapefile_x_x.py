@@ -8,10 +8,10 @@ import sqlite3 as sqlite
 dbfile = 'spalite.db'
 
 ################################################################################
-db = sqlite.connect(dbfile)
-db.enable_load_extension(True)
-db.execute('SELECT load_extension("mod_spatialite.so.7")')
-cursor = db.cursor()
+con = sqlite.connect(dbfile)
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cursor = con.cursor()
 
 ################################################################################
 cursor.execute("DROP TABLE IF EXISTS pcapital")
@@ -25,7 +25,7 @@ cursor.execute('''SELECT AddGeometryColumn('pcapital',
     'geom', 4326, 'POINT', 2)''')
 
 cursor.execute("SELECT CreateSpatialIndex('pcapital', 'geom')")
-db.commit()
+con.commit()
 
 ################################################################################
 from osgeo import ogr
@@ -44,4 +44,4 @@ for i in range(layer.GetFeatureCount()):
     wkt = geometry.ExportToWkt()
     cursor.execute( sql_tpl.format(fd_name ,wkt))
 
-db.commit()
+con.commit()

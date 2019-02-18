@@ -5,10 +5,10 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 import sqlite3 as sqlite
-conn = sqlite.connect(":memory:")
-conn.enable_load_extension(True)
-conn.execute('SELECT load_extension("mod_spatialite.so.7")')
-cur = conn.cursor()
+con = sqlite.connect(":memory:")
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cur = con.cursor()
 
 ################################################################################
 cur.execute('''CREATE VIRTUAL TABLE vshp USING
@@ -21,7 +21,9 @@ for rec in cur: print(rec)
 
 
 ################################################################################
-cur.execute('SELECT PKUID, name, lat, lon, AsText(Geometry) FROM vshp LIMIT 2')
+cur.execute('''SELECT PKUID, name, lat, lon,
+    AsText(Geometry) FROM vshp LIMIT 2''')
+
 for rec in cur: print(rec)
 
 ################################################################################

@@ -17,9 +17,6 @@ band.GetRasterColorInterpretation()
 ################################################################################
 from osgeo import gdalconst
 dir(gdalconst)
-gdalconst.GPI_CMYK
-gdalconst.GPI_Gray
-gdalconst.GPI_HLS
 gdalconst.GPI_RGB
 gdalconst.GDT_Byte
 
@@ -31,9 +28,6 @@ colormap is None
 dataset = gdal.Open('/gdata/lu75i1.tif')
 band = dataset.GetRasterBand(1)
 band.GetRasterColorInterpretation()
-
-################################################################################
-from osgeo import gdalconst
 gdalconst.GCI_PaletteIndex
 
 ################################################################################
@@ -42,12 +36,17 @@ dir(colormap)
 colormap.GetCount()
 
 ################################################################################
+gdalconst.GPI_Gray, gdalconst.GPI_RGB, gdalconst.GPI_CMYK, \
+    gdalconst.GPI_HLS
+
+################################################################################
+
 colormap.GetPaletteInterpretation()
 gdalconst.GPI_RGB
 
 ################################################################################
 for i in range(colormap.GetCount()):
-    print("%i:%s" % (i, colormap.GetColorEntry(i)))
+    print("{}:{}".format(i, colormap.GetColorEntry(i)))
 
 
 ################################################################################

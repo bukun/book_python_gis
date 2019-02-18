@@ -20,4 +20,5 @@ layer.GetExtent()
 layerdef = layer.GetLayerDefn()
 for i in range(layerdef.GetFieldCount()):
     defn = layerdef.GetFieldDefn(i)
-    print(defn.GetName(),defn.GetWidth(),defn.GetType(),defn.GetPrecision())
+    print(defn.GetName(),defn.GetWidth(),defn.GetType(),
+        defn.GetPrecision())

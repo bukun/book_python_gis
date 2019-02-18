@@ -5,13 +5,15 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 from pyproj import Proj
-p=Proj('+proj=aea +lon_0=105 +lat_1=25 +lat_2=47 +ellps=krass')
+p=Proj(
+  '+proj=aea +lon_0=105 +lat_1=25 +lat_2=47 +ellps=krass')
+
 x,y=p(105,36)
 print('%.3f,%.3f' %(x,y))
 
 ################################################################################
 Proj(proj='utm',zone=10,ellps='WGS84') # use kwargs
-Proj('+proj=utm +zone=10 +ellps=WGS84') # use proj4 string
+Proj('+proj=utm +zone=10 +ellps=WGS84') # use Proj.4 string
 Proj(init="epsg:32667")
 Proj("+init=epsg:32667",preserve_units=True)
 

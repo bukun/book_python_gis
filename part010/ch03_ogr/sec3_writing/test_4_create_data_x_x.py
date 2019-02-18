@@ -37,9 +37,11 @@ if os.access( outputfile, os.F_OK ):
     driver.DeleteDataSource( outputfile )
 
 newds = driver.CreateDataSource(outputfile)
-layernew = newds.CreateLayer('worldcopy',None,ogr.wkbLineString)
+layernew = newds.CreateLayer('worldcopy',None,
+    ogr.wkbLineString)
 
 ################################################################################
+
 layer = ds.GetLayer()
 feature = layer.GetNextFeature()
 while feature is not None:

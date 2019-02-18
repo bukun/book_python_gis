@@ -14,7 +14,9 @@ transform.TransformPoint(609000,4928000)
 
 ################################################################################
 from osgeo import ogr
-point = ogr.CreateGeometryFromWkt("POINT (1120351.57 741921.42)")
+point = ogr.CreateGeometryFromWkt(
+    "POINT (1120351.57 741921.42)")
+
 point.Transform(transform)
 point.ExportToWkt()
 

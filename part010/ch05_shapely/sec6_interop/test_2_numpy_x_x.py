@@ -8,7 +8,6 @@ from shapely.geometry import Point
 from numpy import array
 array(Point(0, 0))
 from shapely.geometry import LineString
-from numpy import array
 array(LineString([(0, 0), (1, 1)]))
 
 ################################################################################

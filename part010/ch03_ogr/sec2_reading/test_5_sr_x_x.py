@@ -5,7 +5,7 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 from osgeo import ogr
-inshp = '/gdata/county_popu.shp'
+inshp = '/gdata/region_popu.shp'
 datasource = ogr.Open(inshp)
 layer = datasource.GetLayer(0)
 layer.GetSpatialRef()
@@ -17,5 +17,5 @@ geom = feature.GetGeometryRef()
 geom.GetEnvelope()
 
 ################################################################################
-geom.GetSpatialReference()
-dir(geom)
+sr = geom.GetSpatialReference()
+dir(sr)

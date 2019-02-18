@@ -9,11 +9,11 @@ from helper.textool import get_tmp_file
 import gdal
 driver = gdal.GetDriverByName( 'GTiff' )
 dst_filename = '/tmp/x_tmp.tif'
-dst_ds = driver.Create( dst_filename, 512, 512, 1, gdal.GDT_Byte )
+dst_ds=driver.Create(dst_filename,512,512,1,gdal.GDT_Byte)
 
 ################################################################################
 import numpy, osr
-dst_ds.SetGeoTransform( [ 444720, 30, 0, 3751320, 0, -30 ] )
+dst_ds.SetGeoTransform([444720, 30, 0, 3751320, 0, -30 ])
 srs = osr.SpatialReference()
 srs.SetUTM( 11, 1 )
 srs.SetWellKnownGeogCS( 'NAD27' )

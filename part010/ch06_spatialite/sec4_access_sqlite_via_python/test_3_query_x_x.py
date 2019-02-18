@@ -5,10 +5,10 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 import sqlite3 as sqlite
-db = sqlite.connect('spalite.db')
-db.enable_load_extension(True)
-db.execute('SELECT load_extension("mod_spatialite.so.7")')
-cursor = db.cursor()
+con = sqlite.connect('spalite.db')
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cursor = con.cursor()
 
 ################################################################################
 cursor.execute('''SELECT name, AsText(geom)

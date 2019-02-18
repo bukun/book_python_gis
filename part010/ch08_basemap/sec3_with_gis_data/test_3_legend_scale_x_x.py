@@ -10,10 +10,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 p1 = plt.subplot(121)
-para = {
-    'projection': 'tmerc',
-    'lat_0': 0,
-    'lon_0': 3,
+para = {'projection': 'tmerc','lat_0': 0,'lon_0': 3,
     'llcrnrlon': 1.819757266426611,
     'llcrnrlat': 41.583851612359275,
     'urcrnrlon': 1.841589961763497,
@@ -48,8 +45,6 @@ plt.savefig(get_tmp_file(__file__, '1', file_ext='pdf'), bbox_inches='tight', dp
 plt.clf()
 
 ################################################################################
-
-################################################################################
 mymap = Basemap(**para)
 ds = gdal.Open("/gdata/sample_files/dem.tiff")
 data = ds.ReadAsArray()
@@ -59,13 +54,19 @@ xx, yy = meshgrid(x, y)
 
 ################################################################################
 cmap = plt.get_cmap('PiYG')
-colormesh = mymap.pcolormesh(xx, yy, data, vmin = 500, vmax = 1300, cmap=cmap)
-contour = mymap.contour(xx, yy, data, range(500, 1350, 50), colors = 'k', linestyles = 'solid')
+colormesh = mymap.pcolormesh(xx, yy, data, vmin = 500,
+    vmax = 1300, cmap=cmap)
+
+ctr = mymap.contour(xx, yy, data, range(500, 1350, 50),
+    colors = 'k', linestyles = 'solid')
+
 mymap.colorbar(colormesh)
 
 ################################################################################
-cb = mymap.colorbar(mappable=colormesh, location='bottom', label="等高线")
-cb.add_lines(contour)
+cb = mymap.colorbar(mappable=colormesh, location='bottom',
+    label="等高线")
+
+cb.add_lines(ctr)
 cb.set_ticks([600, 760, 1030, 1210])
 
 # plt.show()
@@ -73,7 +74,3 @@ cb.set_ticks([600, 760, 1030, 1210])
 plt.savefig(get_tmp_file(__file__, '2'), bbox_inches='tight', dpi=600)
 plt.savefig(get_tmp_file(__file__, '2', file_ext='pdf'), bbox_inches='tight', dpi=600)
 plt.clf()
-
-################################################################################
-
-################################################################################

@@ -9,6 +9,6 @@ dir(gdalconst)
 
 ################################################################################
 from osgeo import gdal
-dataset = gdal.Open("/gdata/geotiff_file.tif")
-band = dataset.GetRasterBand(1)
+rds = gdal.Open("/gdata/geotiff_file.tif")
+band = rds.GetRasterBand(1)
 band.DataType

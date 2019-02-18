@@ -23,9 +23,12 @@ layernew.CreateField(fieldf_x)
 layernew.CreateField(fieldf_y)
 
 ################################################################################
-point_coors = [[300, 450], [750, 700], [1200, 450], [750, 200], [750, 450]]
+point_coors = [[300, 450], [750, 700], [1200, 450],
+    [750, 200], [750, 450]]
+
 for pt in point_coors:
-    geom = ogr.CreateGeometryFromWkt('POINT ({0} {1})'.format(pt[0], pt[1]))
+    geom = ogr.CreateGeometryFromWkt(
+        'POINT ({0} {1})'.format(pt[0], pt[1]))
     feat = ogr.Feature(layernew.GetLayerDefn())
     feat.SetField('x', pt[0])
     feat.SetField('y', pt[1])

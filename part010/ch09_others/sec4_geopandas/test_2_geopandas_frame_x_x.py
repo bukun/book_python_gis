@@ -22,7 +22,9 @@ plt.clf()
 world.geometry.name
 
 ################################################################################
-world = world.rename(columns={'geometry': 'borders'}).set_geometry('borders')
+world = world.rename(columns={'geometry': 'borders'}
+    ).set_geometry('borders')
+
 world.geometry.name
 
 ################################################################################

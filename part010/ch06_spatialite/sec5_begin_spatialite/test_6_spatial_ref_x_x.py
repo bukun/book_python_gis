@@ -5,10 +5,10 @@ from helper.textool import get_tmp_file
 
 ################################################################################
 import sqlite3 as sqlite
-db = sqlite.connect(':memory:')
-db.enable_load_extension(True)
-db.execute('SELECT load_extension("mod_spatialite.so.7")')
-cursor = db.cursor()
+con = sqlite.connect(':memory:')
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cursor = con.cursor()
 cursor.execute('SELECT InitSpatialMetaData();')
 
 ################################################################################
@@ -22,17 +22,19 @@ for rec in cursor: print(rec)
 
 
 ################################################################################
-import sqlite3 as sqlite
-conn = sqlite.connect('spalite.db')
-conn.enable_load_extension(True)
-conn.execute('SELECT load_extension("mod_spatialite.so.7")')
-cursor = conn.cursor()
-cursor.execute("select name from sqlite_master where type='table' order by name;")
+con = sqlite.connect('spalite.db')
+con.enable_load_extension(True)
+con.execute('SELECT load_extension("mod_spatialite.so.7")')
+cursor = con.cursor()
+cursor.execute('''select name from sqlite_master where
+    type='table' order by name''')
+
 for rec in cursor: print(rec)
 
+...
 
 ################################################################################
-cursor = cursor.execute('SELECT * FROM spatial_ref_sys LIMIT 5;')
+cursor.execute('SELECT * FROM spatial_ref_sys LIMIT 5')
 for rec in cursor: print(rec)
 
 
@@ -47,7 +49,9 @@ cursor.execute('''SELECT DISTINCT SRID(pcapital.geom),
 cursor.fetchone()
 
 ################################################################################
-cursor.execute('''SELECT AsText(Transform(geom, 3857)) from pcapital''')
+cursor.execute('''SELECT AsText(Transform(geom, 3857))
+    from pcapital''')
+
 cursor.fetchone()
 
 ################################################################################
@@ -62,3 +66,4 @@ cursor.execute('''SELECT AsText(geom), Srid(geom),
     FROM pcapital LIMIT 5''')
 
 cursor.fetchone()
+con.commit()

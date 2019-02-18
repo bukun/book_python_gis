@@ -25,7 +25,9 @@ Point(0, 0).is_empty
 
 ################################################################################
 from operator import attrgetter
-empties = filter(attrgetter('is_empty'), [Point(), Point(0, 0)])
+empties = filter(attrgetter('is_empty'),
+    [Point(), Point(0, 0)])
+
 for g in empties: print(g.wkt)
 
 
@@ -36,7 +38,7 @@ from shapely.geometry import LinearRing
 LinearRing([(0, 0), (1, 1), (1, -1)]).is_ring
 
 ################################################################################
-LineString([(0, 0), (1, 1), (1, -1), (0, 1)]).is_simple
+LineString([(0, 0),(1, 1),(1, -1),(0, 1)]).is_simple
 
 ################################################################################
 from shapely.geometry import MultiPolygon

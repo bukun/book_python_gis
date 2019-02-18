@@ -11,10 +11,7 @@ import matplotlib.pyplot as plt
 from osgeo import gdal
 from numpy import linspace
 from numpy import meshgrid
-para = {
-    'projection': 'tmerc',
-    'lat_0': 0,
-    'lon_0': 3,
+para = {'projection': 'tmerc','lat_0': 0,'lon_0': 3,
     'llcrnrlon': 1.819757266426611,
     'llcrnrlat': 41.583851612359275,
     'urcrnrlon': 1.841589961763497,
@@ -30,9 +27,11 @@ data = ds.ReadAsArray()
 x = linspace(0, mymap.urcrnrx, data.shape[1])
 y = linspace(0, mymap.urcrnry, data.shape[0])
 xx, yy = meshgrid(x, y)
-cs = mymap.contour(xx, yy, data, range(400, 1500, 100), cmap=plt.cm.cubehelix)
+cs = mymap.contour(xx, yy, data, range(400, 1500, 100),
+    cmap=plt.cm.cubehelix)
 
 ################################################################################
+
 p2 = plt.subplot(122)
 mymap = Basemap(**para)
 ds = gdal.Open(dem_tif)
@@ -40,8 +39,12 @@ data = ds.ReadAsArray()
 x = linspace(0, mymap.urcrnrx, data.shape[1])
 y = linspace(0, mymap.urcrnry, data.shape[0])
 xx, yy = meshgrid(x, y)
-cs = mymap.contour(xx, yy, data, range(400, 1500, 100), cmap=plt.cm.cubehelix)
-plt.clabel(cs, inline=True, fmt='%1.0f', fontsize=8, colors='k')
+cs = mymap.contour(xx, yy, data, range(400, 1500, 100),
+    cmap=plt.cm.cubehelix)
+
+plt.clabel(cs, inline=True, fmt='%1.0f',
+    fontsize=8, colors='k')
+
 
 # plt.show()
 
