@@ -4,7 +4,7 @@ Source codes for book ``Python in open source GIS``
 Author: [Bu Kun](http://www.osgeo.cn)
 
 The reposity hosts the source codes for my book ``Python in open source GIS`` (In Chinese language).
-The book is being translated into English, which could be found at https://www.gislite.com/catalog/opensource-python-gis .
+The book is being translated into English, which could be found at https://www.gislite.com/catalog/python-gis .
 
 Installation and Setup
 -----------------------------------------
