@@ -12,7 +12,7 @@ len(line.coords)
 list(line.coords)
 line.coords[1:]
 ###############################################################################
-LineString(line)
+line_copy = LineString(line)
 ###############################################################################
 from shapely.geometry import LinearRing
 ring = LinearRing([(0, 0), (1, 1), (1, 0)])

@@ -7,8 +7,8 @@ p=Proj(
 x,y=p(105,36)
 print('%.3f,%.3f' %(x,y))
 ###############################################################################
-Proj(proj='utm',zone=10,ellps='WGS84') # use kwargs
-Proj('+proj=utm +zone=10 +ellps=WGS84') # use Proj.4 string
+Proj(proj='utm',zone=10,ellps='WGS84')
+Proj('+proj=utm +zone=10 +ellps=WGS84')
 Proj(init="epsg:32667")
 Proj("+init=epsg:32667",preserve_units=True)
 ###############################################################################

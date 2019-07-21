@@ -19,6 +19,7 @@ if os.access(extfile, os.F_OK):
 
 newds = driver.CreateDataSource(extfile)
 lyrn = newds.CreateLayer('rect', None, ogr.wkbPolygon)
+###############################################################################
 feat = layer.GetNextFeature()
 while feat is not None:
     lyrn.CreateFeature(feat)

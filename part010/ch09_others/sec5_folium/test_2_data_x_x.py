@@ -51,20 +51,19 @@ state_geo = '/gdata/folium/data/us-states.json'
 csvf = '/gdata/folium/data/US_Unemployment_Oct2012.csv'
 state_data = pd.read_csv(csvf)
 map_c = folium.Map(location=[48, -102], zoom_start=3)
-map_c.choropleth(geo_data=state_geo,
+folium.Choropleth(geo_data=state_geo,
     name='choropleth', data=state_data,
     columns=['State', 'Unemployment'], key_on='feature.id',
     fill_color='YlGn', fill_opacity=0.7, line_opacity=0.2,
-    legend_name='失业率 (%)')
+    legend_name='失业率 (%)').add_to(map_c)
 folium.LayerControl().add_to(map_c)
 map_c.save('folium_c.html')
 ###############################################################################
-from branca.utilities import split_six
-threshold_scale = split_six(state_data['Unemployment'])
+bins = list(state_data['Unemployment'].quantile([0,0.25,0.5,0.75,1]))
 map_d = folium.Map(location=[48, -102], zoom_start=3)
-map_d.choropleth(geo_data=state_geo, data=state_data,
+folium.Choropleth(geo_data=state_geo, data=state_data,
     columns=['State', 'Unemployment'], key_on='feature.id',
     fill_color='BuPu', fill_opacity=0.7,
     line_opacity=0.5, legend_name='失业率 (%)',
-    threshold_scale=threshold_scale, reset=True)
+    bins=bins, reset=True).add_to(map_d)
 map_d.save('folium_d.html')

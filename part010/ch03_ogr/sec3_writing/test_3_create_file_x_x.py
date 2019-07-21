@@ -31,7 +31,7 @@ driver = ogr.GetDriverByName("ESRI Shapefile")
 if os.access(extfile, os.F_OK):
     driver.DeleteDataSource(extfile)
 newds = driver.CreateDataSource(extfile)
-lyrn = newds.CreateLayer('point', None, ogr.wkbLineString)
+lyrn = newds.CreateLayer('line', None, ogr.wkbLineString)
 lyrn.CreateField(fieldcnstr)
 lyrn.CreateField(fieldf)
 ###############################################################################

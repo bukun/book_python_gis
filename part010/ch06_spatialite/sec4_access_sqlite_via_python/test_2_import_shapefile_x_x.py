@@ -3,8 +3,8 @@
 ###############################################################################
 import sqlite3 as sqlite
 dbfile = 'spalite.db'
-###############################################################################
 con = sqlite.connect(dbfile)
+###############################################################################
 con.enable_load_extension(True)
 con.execute('SELECT load_extension("mod_spatialite.so.7")')
 cursor = con.cursor()

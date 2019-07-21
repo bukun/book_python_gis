@@ -3,6 +3,7 @@
 ###############################################################################
 from osgeo import gdal
 dataset = gdal.Open("/gdata/geotiff_file.tif")
+###############################################################################
 data_arr = dataset.ReadAsArray(30,70,5,5)
 type(data_arr)
 data_arr

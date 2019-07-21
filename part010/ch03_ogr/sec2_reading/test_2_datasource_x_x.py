@@ -12,7 +12,7 @@ dir(datasource)
 driver = ogr.GetDriverByName('ESRI Shapefile')
 ###############################################################################
 import sys
-datasource = driver.Open(inshp,0)
+datasource = driver.Open(inshp, update=0)
 if datasource:
     print('done')
 else:

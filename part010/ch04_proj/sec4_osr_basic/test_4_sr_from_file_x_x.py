@@ -35,14 +35,8 @@ driver = ogr.GetDriverByName('ESRI Shapefile')
 dataset = driver.Open('/gdata/GSHHS_c.shp')
 layer = dataset.GetLayer()
 spatialRef = layer.GetSpatialRef()
+###############################################################################
 spatialRef.ExportToWkt()
 spatialRef.ExportToPCI()
 spatialRef.ExportToUSGS()
 spatialRef.ExportToXML()
-###############################################################################
-from osgeo import ogr, osr
-spatialRef = osr.SpatialReference()
-spatialRef.ImportFromEPSG(26912)
-spatialRef.MorphToESRI()
-with open('xx_proj.prj', 'w') as fout:
-    fout.write(spatialRef.ExportToWkt())

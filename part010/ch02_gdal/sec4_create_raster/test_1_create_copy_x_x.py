@@ -17,4 +17,5 @@ dst_ds3 = driver.CreateCopy( dst_filename3, src_ds, 0,
 ###############################################################################
 driver.CreateCopy("/tmp/xx_geotiff_copy_a1.tif",src_ds,0)
 ###############################################################################
-driver.CreateCopy("/tmp/xx_geotiff_copy_a2.tif",src_ds,0,["INTERLEAVE=PIXEL"])
+driver.CreateCopy("/tmp/xx_geotiff_copy_a2.tif",src_ds,
+   0,["INTERLEAVE=PIXEL"])
