@@ -21,6 +21,7 @@ colormap is None
 dataset = gdal.Open('/gdata/lu75i1.tif')
 band = dataset.GetRasterBand(1)
 band.GetRasterColorInterpretation()
+###############################################################################
 gdalconst.GCI_PaletteIndex
 ###############################################################################
 colormap = band.GetRasterColorTable()

@@ -27,7 +27,6 @@ dir(pt_layer)
 outputfile ='/tmp/xx_GSHHS_copy3.shp'
 if os.access( outputfile, os.F_OK ):
     driver.DeleteDataSource( outputfile )
-###############################################################################
 newds = driver.CreateDataSource(outputfile)
 layernew = newds.CreateLayer('worldcopy',None,
     ogr.wkbLineString)

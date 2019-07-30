@@ -2,9 +2,19 @@
 # -*- coding: utf-8 -*-
 ###############################################################################
 import shapefile
-w = shapefile.Writer()
+w = shapefile.Writer('xx_pyshp_1')
 ###############################################################################
-w = shapefile.Writer(shapeType=1)
+w.close()
+###############################################################################
+import shapefile
+with shapefile.Writer('xx_pyshp_2') as w:
+    pass
+###############################################################################
+from io import BytesIO
+shp = BytesIO(); shx = BytesIO(); dbf = BytesIO()
+w = shapefile.Writer(shp=shp, shx=shx, dbf=dbf)
+###############################################################################
+w = shapefile.Writer('xx_pyshp_3', shapeType=1)
 w.shapeType
 ###############################################################################
 w.shapeType = 3
@@ -12,66 +22,48 @@ w.shapeType
 ###############################################################################
 w.autoBalance = 1
 ###############################################################################
-w = shapefile.Writer()
-w.point(122, 37)
-w.shapes()[0].points
+w.balance()
 ###############################################################################
-w.point(118, 36, 4, 8)
-w.shapes()[1].points
-###############################################################################
-w = shapefile.Writer()
-w.poly(shapeType=3,
-    parts=[[[122, 37, 4, 9], [117, 36, 3, 4]],
-    [[115, 32, 8, 8], [118, 20, 6, 4], [113, 24]]])
-###############################################################################
-w = shapefile.Writer()
-w.null()
-###############################################################################
-w.shapes()[0].shapeType
-###############################################################################
-targetName = w.save()
-targetName
-###############################################################################
-w.save(shp='xx_shp', dbf='xx_dbf', shx ='xx_shx')
-###############################################################################
-from io import BytesIO
-shp = BytesIO(); shx = BytesIO(); dbf = BytesIO()
-w.saveShp(shp)
-w.saveShx(shx)
-w.saveDbf(dbf)
-###############################################################################
-shp = shx = dbf = None
-###############################################################################
-w = shapefile.Writer(shapefile.POINT)
-w.point(1,1)
-w.point(3,1)
-w.point(4,3)
-w.point(2,2)
-###############################################################################
+w = shapefile.Writer('xx_pyshp_4')
 w.field('FIRST_FLD')
 w.field('SECOND_FLD','C','40')
 ###############################################################################
 w.record('First','Point')
 w.record('Second','Point')
-w.record('Third','Point')
-w.record('Fourth','Point')
 ###############################################################################
-w.save('xx_sf_point')
+w.balance()
+w.close()
 ###############################################################################
-w = shapefile.Writer(shapefile.POLYGON)
-w.poly(parts=[[[1,5],[5,5],[5,1],[3,3],[1,1]]])
+w = shapefile.Writer('xx_pyshp_5')
+w.field('NAME')
+w.point( 91  , 29.6)
+w.point(125.35 , 43.88333)
+w.record('LaSa')
+w.record('ChangChun')
+w.close()
+###############################################################################
+w = shapefile.Writer('xx_pyshp_6', shapefile.POLYLINE)
+w.line([[[1,3],[5,3]]])
+###############################################################################
+w.line([[[1,5],[5,5],[5,1],[3,3],[1,1]]])
 w.field('FIRST_FLD','C','40')
-w.field('SECOND_FLD','C','40')
+w.record('First')
+w.record('Second')
+w.close()
 ###############################################################################
-w.record(FIRST_FLD='First', SECOND_FLD='Polygon')
-w.save('xx_sf_polygon')
+w = shapefile.Writer('xx_pyshp_7')
+w.field('name', 'C')
+w.poly([
+    [[4,4], [4,8], [8,8], [8,4]],
+    [[6,7], [7,5], [5,5]],
+    [[9,4], [9,6], [10,4]]
+    ])
+w.record('polygon1')
+w.close()
 ###############################################################################
-w = shapefile.Writer(shapefile.POLYLINE)
-w.line(parts=[[[1,5],[5,5],[5,1],[3,3],[1,1]]])
+w = shapefile.Writer('xx_pyshp_8', shapeType=1)
+w.field('NAME')
+w.null()
 ###############################################################################
-w.poly(parts=[[[1,3],[5,3]]], shapeType=shapefile.POLYLINE)
-w.field('FIRST_FLD','C','40')
-w.field('SECOND_FLD','C','40')
-w.record('First','Line')
-w.record('Second','Line')
-w.save('xx_sf_line')
+w.record('null')
+w.close()

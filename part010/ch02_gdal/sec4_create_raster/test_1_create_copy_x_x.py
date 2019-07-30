@@ -13,9 +13,10 @@ dst_ds = driver.CreateCopy( dst_filename2, src_ds, 0,
    [ 'TILED=YES', 'COMPRESS=PACKBITS' ] )
 dst_filename3 = "/tmp/xx_geotiff_copy3.tif"
 dst_ds3 = driver.CreateCopy( dst_filename3, src_ds, 0,
-   [ 'TILED=YES', 'COMPRESS=PACKBITS' ] )
+   [ 'TILED=NO', 'COMPRESS=PACKBITS' ] )
 ###############################################################################
-driver.CreateCopy("/tmp/xx_geotiff_copy_a1.tif",src_ds,0)
+driver.CreateCopy("/tmp/xx_geotiff_copy_a1.tif",src_ds,
+   0,["INTERLEAVE=BAND"])
 ###############################################################################
 driver.CreateCopy("/tmp/xx_geotiff_copy_a2.tif",src_ds,
    0,["INTERLEAVE=PIXEL"])
