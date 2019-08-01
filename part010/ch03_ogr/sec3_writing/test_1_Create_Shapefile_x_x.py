@@ -4,7 +4,7 @@
 from osgeo import ogr
 driver=ogr.GetDriverByName('ESRI Shapefile')
 ###############################################################################
-ds =driver.CreateDataSource('test.shp')
+ds =driver.CreateDataSource('xx_test.shp')
 layer=ds.CreateLayer('test',geom_type=ogr.wkbPoint)
 ###############################################################################
 fieldDefn = ogr.FieldDefn( 'id',ogr.OFTString)

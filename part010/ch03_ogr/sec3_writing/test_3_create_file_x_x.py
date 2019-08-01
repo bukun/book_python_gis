@@ -54,7 +54,7 @@ driver = ogr.GetDriverByName("ESRI Shapefile")
 if os.access(extfile, os.F_OK):
     driver.DeleteDataSource(extfile)
 newds = driver.CreateDataSource(extfile)
-lyrn = newds.CreateLayer('polygon',None,ogr.wkbLineString)
+lyrn = newds.CreateLayer('polygon',None,ogr.wkbPolygon)
 lyrn.CreateField(fieldcnstr)
 lyrn.CreateField(fieldf)
 ###############################################################################
