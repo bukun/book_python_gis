@@ -27,7 +27,7 @@ Build database:
 ---------------------------------
  
 本代码为《Python与开源GIS》一书的脚本。
-书中的大部分内容，发布在网站： [http://www.osgeo.cn/pygis/](http://www.osgeo.cn/pygis/) 。
+书中的大部分内容，发布在网站： (http://www.osgeo.cn/pygis/) 。
 
 代码是作为学习使用，提供了作为测试。在学习的时候，最好还是仔细键入运行来查看效果。
 因为代码中用到了一些数据，
