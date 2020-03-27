@@ -11,13 +11,14 @@ if os.access( extfile, os.F_OK ):
 newds = driver.CreateDataSource(extfile)
 layernew = newds.CreateLayer('rect3',None,ogr.wkbPolygon)
 ###############################################################################
-fieldcnstr = ogr.FieldDefn("类型",ogr.OFTString)
-fieldcnstr.SetWidth(36)
-fieldf = ogr.FieldDefn("area",ogr.OFTReal)
+field_name = ogr.FieldDefn("name",ogr.OFTString)
+field_name.SetWidth(36)
+field_area = ogr.FieldDefn("area",ogr.OFTReal)
+###############################################################################
+layernew.CreateField(field_name)
+layernew.CreateField(field_area)
 ###############################################################################
 laydef = layernew.GetLayerDefn()
-laydef.AddFieldDefn(fieldcnstr)
-laydef.AddFieldDefn(fieldf)
 laydef.GetFieldCount()
 ###############################################################################
 newds.Destroy()

@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 ###############################################################################
+import matplotlib
+matplotlib.rcParams['font.family'] = 'sans-serif'
+matplotlib.rcParams['font.sans-serif'] = ['STKaiti']
+###############################################################################
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,7 +21,7 @@ m.drawmeridians(np.arange(60., 140., 10.),labels=[0,0,0,1],
 ###############################################################################
 x, y = m(116.42, 40.21)
 x2, y2 = m(125.27, 43.83)
-plt.annotate('Beijing', xy=(x, y), xycoords='data',
+plt.annotate('北京', xy=(x, y), xycoords='data',
      xytext=(x2, y2), textcoords='data', color='r',
      arrowprops=dict(arrowstyle="fancy", color='g') )
 plt.show()
