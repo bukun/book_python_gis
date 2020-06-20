@@ -31,9 +31,3 @@ utm=Proj(proj='utm',zone=48,ellps='WGS84')
 ###############################################################################
 x,y=utm(105,36)
 x,y
-###############################################################################
-utm.is_geocent()
-utm.is_latlong()
-latlong=Proj('+proj=latlong')
-latlong.is_latlong()
-latlong.is_geocent()
